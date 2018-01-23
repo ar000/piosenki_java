@@ -1,0 +1,19 @@
+Rozpoznawane akordy:
+wszystkie durowe i mollowe:
+c cis d dis e f fis g gis a b h
+nie ma ais tylko polskie b
+nie rozpoznaje akordów obni¿onych - as ges des itp.
+
+z dŸwiêkiem w basie np: C7/H -  nuta basowa musi byæ zapisana wielk¹ liter¹
+
+Bezpoœrednio przed akordem mo¿e byæ:
+
+znak: "|"   oznaczaj¹cy ¿e od tego miejsca w linii zaczynaj¹ siê akordy
+            np.     jakiœ tekst  |A C gis
+
+spacja " " lub ukoœnik "/"
+
+inne znaki np. akord w nawiasach (A) nie bêdzie transponowany ale taki zapis:
+ ( A ) - ju¿ tak, bo jest spacja.
+
+wyj¹tek: nie u¿ywaæ ci¹gu znaków: ukoœnik spacja "/ " bo robi¹ siê b³êdy. Mo¿e kiedyœ naprawiê
