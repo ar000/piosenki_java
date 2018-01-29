@@ -1,6 +1,7 @@
-package view;
+package textViewer;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.datatransfer.DataFlavor;
@@ -16,6 +17,7 @@ import java.io.File;
 import java.util.List;
 
 import javax.swing.BorderFactory;
+import javax.swing.DefaultListModel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -23,40 +25,48 @@ import javax.swing.JTextArea;
 import javax.swing.ListSelectionModel;
 import javax.swing.border.Border;
 
-import piosenki.Const;
-import piosenki.Current;
 import piosenki.Dane;
-import textViewer.TextListCell;
+import view.TableCell;
+import view.W;
 
-public class PanelLeft extends JPanel{
-	private static final long serialVersionUID = 1L;
-	private ActionsController ac;
-	JTextArea text;
+public class PanelTextViewer extends JPanel {
+	
+	JTextArea textArea;
 	JList textList;
-	private JScrollPane scroll;
-	public PanelLeft(){
+	private JScrollPane scrollView, scrollEdit;
+	
+	public PanelTextViewer(DefaultListModel model){
 		setPreferredSize(W.panelLeftDim);
 		setBackground(Color.GREEN);
 		setLayout(new GridLayout());
+		setLayout(null);
+		
+		textList = new JList();
+		textList.setCellRenderer(new TableCell());
+		textList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		textList.setCellRenderer(new TextListCell());
+		textList.setModel(model);
+	
 		
 		
-		text = new JTextArea();
-		text.setEditable(false);
-		text.setBounds(0, 0, 100, 100);
-		//text.setFont(new Font("monospaced", Font.PLAIN, 20));//12
-		text.setFont(text.getFont().deriveFont(20f));
+		
+		textArea = new JTextArea();
+		textArea.setEditable(false);
+		textArea.setBounds(0, 0, 100, 100);
+		textArea.setFont(textArea.getFont().deriveFont(W.fontSize12));
+		
 	    Border border = BorderFactory.createLineBorder(Color.WHITE);
-	    text.setBorder(BorderFactory.createCompoundBorder(border, BorderFactory.createEmptyBorder(3, 3, 3, 3)));
-	    text.addKeyListener(new KeyListener(){
+	    textArea.setBorder(BorderFactory.createCompoundBorder(border, BorderFactory.createEmptyBorder(3, 3, 3, 3)));
+	    textArea.addKeyListener(new KeyListener(){
 	        @Override
 	        public void keyPressed(KeyEvent e){
 	        	if(e.getKeyCode() == KeyEvent.VK_F1){
 	        		e.consume();
-	        		pressF1();
+	       		pressF1();
 	        	}
 	        	if(e.getKeyCode() == KeyEvent.VK_TAB){
 	        		e.consume();
-	        		pressTab();
+	       		pressTab();
 	        	}
 	        }
 
@@ -69,7 +79,7 @@ public class PanelLeft extends JPanel{
 	        }
 	    });
 	    
-	    new DropTarget(text, new DropTargetListener(){
+	    new DropTarget(textArea, new DropTargetListener(){
 	    	
 			@Override
 			public void dragEnter(DropTargetDragEvent arg0) {
@@ -93,7 +103,7 @@ public class PanelLeft extends JPanel{
             		
                 }catch(Exception ex){}
 				String path = list.get(0).getPath();
-				ac.dropFile(path);
+			////////////	ac.dropFile(path);
 
 			}
 
@@ -104,21 +114,36 @@ public class PanelLeft extends JPanel{
 			}
         });
 	    
-	    textList = new JList();
-		textList.setCellRenderer(new TableCell());
-		textList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		textList.setCellRenderer(new TextListCell());
-		textList.setModel(Dane.modelTextList);
-	
-	    scroll = new JScrollPane (textList, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-	  
-	    add(scroll);
+	    scrollEdit = new JScrollPane (textArea, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		scrollView = new JScrollPane (textList, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		scrollView.setBounds(0,0,W.panelLeftDim.width, W.panelLeftDim.height);
+	    scrollEdit.setBounds(0,0,W.panelLeftDim.width, W.panelLeftDim.height);
+	    
+	    add(scrollView);
+	    add(scrollEdit);
+	    scrollView.setVisible(false);
+	    scrollEdit.setVisible(false);
+	   
+	    
+	    
 	}
 	
-	public void init(ActionsController ac){
-		this.ac = ac;
+	public void setEditor(){
+		scrollView.setVisible(false);
+	    scrollEdit.setVisible(true);
+	    setEdit(true);
 	}
-	
+		
+	public void setView(){
+		scrollView.setVisible(true);
+	    scrollEdit.setVisible(false);
+	    setEdit(false);
+	}
+	private void setEdit(boolean co){
+		textArea.setEditable(co);
+		textArea.setCaretPosition(0);
+		textArea.getCaret().setVisible(co);
+	}
 	private void pressF1(){
 		addSymbol("|");
 	}
@@ -128,28 +153,9 @@ public class PanelLeft extends JPanel{
 	}
 	private void addSymbol(String s){
 		int position = -1;
-		position = text.getCaretPosition();
-		text.insert(s, position);
-		text.setCaretPosition(position);
+		position = textArea.getCaretPosition();
+		textArea.insert(s, position);
+		textArea.setCaretPosition(position);
 	}
-	public void setEdit(boolean co){
-		text.setEditable(co);
-		text.setCaretPosition(0);
-		text.getCaret().setVisible(co);
-	}
-	
-	
-	///////////////////////////////////////////////
-	
-//	public void xxxsetText(String[] t){
-//		text.setText("");
-//		for(int i = 2; i < t.length; i++){
-//			text.append(t[i]+'\n');
-//		}
-//		text.setCaretPosition(0);
-//	}
-//	public void xxxsetTextString(String t){
-//		text.setText(t);
-//	}
 	
 }

@@ -9,6 +9,7 @@ import javax.swing.UIManager;
 
 import piosenki.Const;
 import piosenki.Logic;
+import textViewer.TextViewer;
 
 
 public class Okno  extends JFrame{
@@ -60,7 +61,9 @@ public class Okno  extends JFrame{
 		setLocation(W.windowX,W.windowY);
 		setLayout(flow);
 	
-		add(p_left);
+		//TextViewer tv = new TextViewer();
+		add(TextViewer.getPanel());
+		//add(p_left);
 		add(p_tool);
 		add(p_right);
 		add(p_edit);

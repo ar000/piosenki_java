@@ -1,5 +1,6 @@
 package view;
 
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -18,6 +19,7 @@ import javax.swing.plaf.basic.BasicCheckBoxMenuItemUI;
 
 import piosenki.Const;
 import piosenki.Logic;
+import textViewer.TextViewer;
 
 public class PopMenu {
 
@@ -77,8 +79,11 @@ public class PopMenu {
 	        public void actionPerformed(ActionEvent e)
 	        {
 	        	L.clickEditSong();
+	        	TextViewer.showEditor();
 	        }
 	    });
+		//TextViewer tv = new TextViewer(new Dimension(3,3));
+		// edit.addActionListener(TextViewer.ActionViewEdit());
 		 delete = new JMenuItem("Usuñ piosenkê");
 		 delete.setToolTipText(Const.TIP_DELETESONG);
 		 delete.addActionListener( new ActionListener()

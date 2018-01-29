@@ -58,6 +58,7 @@ public class PanelRight extends JPanel{
 			searchPanel.setBackground(Color.orange);
 		searchPanel.setLayout(null);
 		searchInfo = new JLabel("Wpisz wyszukiwany tekst");
+		searchInfo.setFont(searchInfo.getFont().deriveFont(W.fontSize12));
 		searchInfo.setBounds(W.searchInfoRect);
 		searchPanel.add(searchInfo);
 		JButton clear = new JButton("Czyœæ");
@@ -140,21 +141,29 @@ public class PanelRight extends JPanel{
 		scrollWords.setBounds(W.scrollWordsRect);
 		
 		panelIndex.setBounds(W.panelIndexRect);
+		
 		if(W.colors) 
 			panelIndex.setBackground(Color.YELLOW);
 		panelIndex.add(searchPanel);
 		panelIndex.add(scrollTitle);
 		panelIndex.add(scrollWords);
 		
+		
+		
+		JPanel groupChange = new JPanel();
+		groupChange.setBounds(W.panelGroupChange);
+		groupChange.setLayout(null);
+		
 		JButton gru = new JButton("GRUPA  >");
 		gru.setToolTipText(Const.TIP_GROUPS);
 		gru.setBounds(W.buttonGroupsRect);
+		gru.setFont(gru.getFont().deriveFont(W.fontSize12));
 		gru.setFocusable(false);
 		gru.addActionListener( new ActionListener()
 	    {
 	        public void actionPerformed(ActionEvent e)
 	        {
-	        	Dane.popMenu.menuGroup.show(gru, -10, 18); //90,0
+	        	Dane.popMenu.menuGroup.show(gru, W.menuGrupX, W.menuGrupY); //-10,18
 	        }
 	    });
 		
@@ -162,10 +171,13 @@ public class PanelRight extends JPanel{
 		groupName.setBounds(W.labelGroupNameRect);
 		groupName.setToolTipText(Const.TIP_GROUPNAME);
 		groupName.setForeground(Color.blue);
-		groupName.setFont(groupName.getFont().deriveFont(14f));
+		groupName.setFont(groupName.getFont().deriveFont(W.fontSize14));
 		
-		add(gru);
-		add(groupName);
+		
+		
+		groupChange.add(gru);
+		groupChange.add(groupName);
+		add(groupChange);
 		add(panelIndex);
 		
 	}

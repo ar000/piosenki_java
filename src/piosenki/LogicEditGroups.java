@@ -2,6 +2,7 @@ package piosenki;
 
 import baseFile.Baza;
 import baseFile.Group;
+import textViewer.TextViewer;
 import view.ViewController;
 
 public class LogicEditGroups {
@@ -40,7 +41,7 @@ public class LogicEditGroups {
 		for(String h : Dane.editLog){
 			s[i++] = h;
 		}
-		vc.setText(s);
+		TextViewer.setText(s);  //vc.setText(s);
 		if(Baza.groups.size() == Const.ILE_MAX_GRUP) 
 			vc.setAddGroupEnabled(false);
 		else

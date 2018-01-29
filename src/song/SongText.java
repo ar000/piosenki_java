@@ -1,28 +1,15 @@
 package song;
 
-import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.FontMetrics;
-import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.GraphicsDevice;
-import java.awt.Image;
-import java.awt.Label;
-import java.awt.Rectangle;
-import java.awt.Shape;
 import java.awt.image.BufferedImage;
-import java.awt.image.ImageObserver;
-import java.text.AttributedCharacterIterator;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.JLabel;
-
-import javafx.scene.layout.Region;
 import piosenki.Dane;
-import text.LineText;
-import view.ALabel;
+import textViewer.LineText;
+import view.W;
 
 
 public class SongText {
@@ -126,7 +113,7 @@ public class SongText {
 
             if(d>1){
 
-                int w = getTextSize(chordLine, Dane.textFont);
+                int w = getTextSize(chordLine, W.chordFont);
        
                 if (w > maxWidthChord)
                     maxWidthChord = w;
@@ -144,7 +131,7 @@ public class SongText {
             lineTrim = linesText[d].substring(0,linesText[d].length()-ile);
             if(d>1){
               
-                int gw = getTextSize(lineTrim, Dane.oxygenFont);
+                int gw = getTextSize(lineTrim, W.textFont);
                 if (gw > maxWidthLine)
                     maxWidthLine = gw;
             }

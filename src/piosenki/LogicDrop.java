@@ -7,6 +7,7 @@ import javax.swing.JOptionPane;
 
 import baseFile.Baza;
 import song.SongInfo;
+import textViewer.TextViewer;
 import view.ViewController;
 
 public class LogicDrop {
@@ -173,21 +174,24 @@ public class LogicDrop {
 		for(String d : stat){
 			titles[a++] = d;
 		}
-		vc.setText(titles);
+		
+		TextViewer.setText(titles);  //vc.setText(titles);
+		
+		
 		vc.showPanels(ViewController.PANELS.ADD);
 		vc.setWindowTitle("Dodawanie piosenek z zestawu:  \"" + shareName + "\"");
 	}
 	
 	private  void dropText(){
 		List<String>textLines = Plik.readFile(path);
-		StringBuilder sb = new StringBuilder();
+		//StringBuilder sb = new StringBuilder();
 		String[] t = new String[textLines.size()];
 		for(int tx = 0; tx < textLines.size(); tx++){
 			t[tx] = textLines.get(tx);
-			sb.append(textLines.get(tx));
-			sb.append('\n');
+			//sb.append(textLines.get(tx));
+			//sb.append('\n');
 		}
-		vc.setTextString(sb.toString());
+		TextViewer.setText(t);   //vc.setTextString(sb.toString());
 		
 		vc.setWindowTitle("Dodawanie z pliku: "+path);
 		Dane.editTitle = "";

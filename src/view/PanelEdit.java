@@ -17,6 +17,7 @@ import javax.swing.border.Border;
 import javax.swing.border.EtchedBorder;
 
 import piosenki.Dane;
+import textViewer.TextViewer;
 
 public class PanelEdit extends JPanel{
 
@@ -185,6 +186,7 @@ public class PanelEdit extends JPanel{
 	        	ac.clickEditSavePostEdit();
 	        }
 	    });
+		
 		l_info = new JLabel("");
 		l_info.setBounds(8, 35, 280, 25);
 		l_info.setForeground(Color.RED);
@@ -218,8 +220,10 @@ public class PanelEdit extends JPanel{
 	        public void actionPerformed(ActionEvent e)
 	        {
 	        	ac.clickEditCancel();
+	        	TextViewer.showViewer();
 	        }
 	    });
+		//b_exit.addActionListener(TextViewer.ActionViewView());
 		ex.add(b_exit);
 		
 		JPanel sep3 = new JPanel();

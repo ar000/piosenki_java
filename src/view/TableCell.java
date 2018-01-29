@@ -26,11 +26,16 @@ public class TableCell extends JPanel implements ListCellRenderer<String>{
 		Font f = label.getFont();
 		label.setBackground(Color.WHITE);
 		label.setOpaque(true);
-		label.setFont(f.deriveFont(f.getStyle() & ~Font.BOLD));
+		//label.setFont(f.deriveFont(f.getStyle() & ~Font.BOLD));
 		label.setFont(Dane.oxygenFont);
+		label.setFont(label.getFont().deriveFont(W.fontSize12));
 		setLayout(null);
-		setPreferredSize(new Dimension(50, 16));
-
+		
+		int wys = (int)(label.getFont().getSize() * 1.3);
+		W.labelIndexCell.height = wys;
+		setPreferredSize(W.labelIndexCell);
+		
+		
 
 	    label.setBounds(4,-2,800,20);
 		

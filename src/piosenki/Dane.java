@@ -14,7 +14,7 @@ import javax.swing.table.DefaultTableModel;
 import song.SongBase;
 import song.SongInfo;
 import song.SongText;
-import text.LineText;
+import textViewer.LineText;
 import view.PopMenu;
 
 public class Dane {

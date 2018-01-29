@@ -1,4 +1,4 @@
-package text;
+package textViewer;
 
 import java.awt.Color;
 import java.awt.Component;
@@ -27,33 +27,40 @@ public class TextListCell extends JPanel implements ListCellRenderer<LineText>{
 		line.setBackground(Color.WHITE);
 		Color color = new Color(248,248,255);
 		chords.setBackground(color);
-		f = line.getFont();
+//		f = line.getFont();
+//		
+//		line.setFont(f.deriveFont(f.getStyle() & ~Font.BOLD));
 		
-		line.setFont(f.deriveFont(f.getStyle() & ~Font.BOLD));
+//		line.setFont(Dane.oxygenFont);
+//		line.setFont(line.getFont().deriveFont(W.fontSizeL));
 		
-		line.setFont(Dane.oxygenFont);
+		line.setFont(W.textFont);
 		
-		f = chords.getFont();
-		chords.setFont(f.deriveFont(f.getStyle() & ~Font.BOLD));
-		chords.setFont(Dane.chordFont);
+//		f = chords.getFont();
+//		chords.setFont(f.deriveFont(f.getStyle() & ~Font.BOLD));
+//		chords.setFont(Dane.chordFont);
+//		chords.setFont(chords.getFont().deriveFont(W.fontSizeL));
+		
+		chords.setFont(W.chordFont);
 		
 		Dane.textFont = chords.getFont();
 		
 		line.setOpaque(true);
 		chords.setOpaque(true);
 		
-		wys = (int)(Dane.oxygenFont.getSize() * 1.3);
+		//wys = (int)(Dane.oxygenFont.getSize() * 1.3);
+		wys = (int)(line.getFont().getSize() * 1.3);
 		odLewej = 5;
 		odstep = wys/2;
 		
 		lin = new Rectangle(odLewej,0,250,wys);
-		cho = new Rectangle(255,0,200,16);
+		cho = new Rectangle(255,0,200,wys);
 		
 		line.setBounds(lin);
 		chords.setBounds(cho);
 		
 		
-		setPreferredSize(new Dimension(200, 16));
+		setPreferredSize(new Dimension(200, wys));
 		setLayout(null);
 		setBackground(Color.WHITE);
 		add(line);

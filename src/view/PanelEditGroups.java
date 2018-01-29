@@ -1,5 +1,6 @@
 package view;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
@@ -35,12 +36,14 @@ public class PanelEditGroups extends JPanel{
 	}
 	
 	public PanelEditGroups(){
-		setPreferredSize(new Dimension(345+45,725));//352 bylo
+		setPreferredSize(W.panelEditGroup);//(345+45,725)
 		setLayout(new FlowLayout(FlowLayout.CENTER));
+		setBackground(Color.green);
 		setVisible(false);
 	
 		JLabel l1 = new JLabel("Zaznacz grupê do zmiany",SwingConstants.CENTER);
-		l1.setPreferredSize(new Dimension(350,25));
+		l1.setFont(l1.getFont().deriveFont(W.fontSize12));
+		l1.setPreferredSize(W.labelZaznaczGrupe);//(350,25)
 		
 		tabela = new JTable();
 		tabela.setFocusable(false);
@@ -67,18 +70,19 @@ public class PanelEditGroups extends JPanel{
         column = tabela.getColumnModel().getColumn(1);
         column.setPreferredWidth(25);
 		JScrollPane scroll = new JScrollPane(tabela);
-		scroll.setPreferredSize(new Dimension(350,510));
+		scroll.setPreferredSize(W.scrollTebleEditGroups);//(350,510)
 		
 		JPanel but = new JPanel();
-		but.setPreferredSize(new Dimension(350, 150));
+		but.setPreferredSize(W.panelButtonsEditGroup);//(350, 150)
 		but.setLayout(null);
 		
 			label1 = new JLabel("Wykonaj dla zaznaczonej grupy: ");
-			label1.setBounds(5, 5, 300, 25);
+			label1.setFont(label1.getFont().deriveFont(W.fontSize12));
+			label1.setBounds(W.labelWykonajDlaGrupy);//(5, 5, 300, 25)
 			
 			up = new JButton("wy¿ej");
 			up.setFocusable(false);
-			up.setBounds(5, 35, 110, 25);
+			up.setBounds(W.buttonGroupUp);//(5, 35, 110, 25)
 			up.addActionListener( new ActionListener()
 		    {
 		        public void actionPerformed(ActionEvent e)
@@ -91,7 +95,7 @@ public class PanelEditGroups extends JPanel{
 			
 			down = new JButton("ni¿ej");
 			down.setFocusable(false);
-			down.setBounds(125, 35, 110, 25);
+			down.setBounds(W.buttonGroupDown);//(125, 35, 110, 25)
 			down.addActionListener( new ActionListener()
 		    {
 		        public void actionPerformed(ActionEvent e)
@@ -104,7 +108,7 @@ public class PanelEditGroups extends JPanel{
 			
 			JButton rename = new JButton("Zmieñ nazwê");
 			rename.setFocusable(false);
-			rename.setBounds(5, 70, 110, 25);
+			rename.setBounds(W.buttonGroupRename);
 			rename.addActionListener( new ActionListener()
 		    {
 		        public void actionPerformed(ActionEvent e)
@@ -123,7 +127,7 @@ public class PanelEditGroups extends JPanel{
 			
 			delete = new JButton("Usuñ grupê");
 			delete.setFocusable(false);
-			delete.setBounds(125, 70, 110, 25);
+			delete.setBounds(W.buttonGroupDelete);
 			delete.addActionListener( new ActionListener()
 		    {
 		        public void actionPerformed(ActionEvent e)
@@ -161,12 +165,13 @@ public class PanelEditGroups extends JPanel{
 		    });
 			
 			infoNewGroup = new JLabel("Grupa o tej nazwie ju¿ istnieje. Wybierz inn¹ nazwê.");
-			infoNewGroup.setBounds(5, 100, 300, 25);
+			infoNewGroup.setFont(infoNewGroup.getFont().deriveFont(W.fontSize12));
+			infoNewGroup.setBounds(W.labelInfoNewGroup);
 			infoNewGroup.setVisible(false);
 			
 			dodaj = new JButton("Dodaj now¹ grupê");
 			dodaj.setFocusable(false);
-			dodaj.setBounds(5, 125, 160, 25);
+			dodaj.setBounds(W.buttonGroupAdd);
 			dodaj.addActionListener( new ActionListener()
 		    {
 		        public void actionPerformed(ActionEvent e)
@@ -186,7 +191,7 @@ public class PanelEditGroups extends JPanel{
 			
 			JButton exit = new JButton("Zakoñcz");
 			exit.setFocusable(false);
-			exit.setBounds(250, 125, 100, 25);
+			exit.setBounds(W.buttonExitEditGroups);
 			exit.addActionListener( new ActionListener()
 		    {
 		        public void actionPerformed(ActionEvent e)

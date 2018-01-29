@@ -15,7 +15,8 @@ import baseFile.Group;
 import song.SongBase;
 import song.SongInfo;
 import song.SongText;
-import text.LineText;
+import textViewer.LineText;
+import textViewer.TextViewer;
 import view.ActionsController;
 import view.Okno;
 import view.ViewController;
@@ -32,11 +33,13 @@ public class Logic {
 	List<Integer> indexes;
 	public Logic(){
 		ToolTipManager.sharedInstance().setDismissDelay(30000);
-		new W();
 		new Dane();
+		new W();
+		
 		new Baza(Dane.pathIndex);
 		new Current();
 		Dane.popMenu.sendTo(this);
+		new TextViewer();
 		w = new Okno();
 		vc = new ViewController();
 		song = new LogicSong(vc);
@@ -95,19 +98,21 @@ public class Logic {
 	private void showText(){
 		Dane.currentText = new SongText(Baza.getSongText(Dane.currentSong.getTitle()), Dane.currentSong.getTitle(),
 										Dane.currentSong.getAuthor(), Dane.currentSong.getCapo(),W.panelLeftDim.width);
-		vc.setText(Dane.currentText.getText());
+	//	vc.setText(Dane.currentText.getText());
 		vc.setInfoSong(Dane.currentText);
 		
 		
 		
-		Dane.modelTextList.clear();
-		List<LineText> lt = Dane.currentText.getArrayLineText();
-		for(LineText l : lt){
-			Dane.modelTextList.addElement(l);
-			int r = 93;
-			r++;
-			//vbfg
-		}
+//		Dane.modelTextList.clear();
+//		List<LineText> lt = Dane.currentText.getArrayLineText();
+//		for(LineText l : lt){
+//			Dane.modelTextList.addElement(l);
+//			int r = 93;
+//			r++;
+//			//vbfg
+//		}
+		TextViewer.setTextRead(Dane.currentText);
+		
 		
 	}
 	public void clickTitleOnList(int index){

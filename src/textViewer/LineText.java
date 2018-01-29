@@ -1,4 +1,4 @@
-package text;
+package textViewer;
 
 public class LineText {
     String text, chords;

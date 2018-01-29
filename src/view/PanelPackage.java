@@ -36,7 +36,7 @@ public class PanelPackage extends JPanel{
 		//FlowLayout fl = new FlowLayout(FlowLayout.CENTER,30,0);
 		//FlowLayout fl = new FlowLayout();
 		//fl.setAlignment(FlowLayout.CENTER);
-		setPreferredSize(new Dimension(345+45,725));//352 bylo
+		setPreferredSize(W.panelPackage);//352 bylo (345+45,725)
 		setLayout(new FlowLayout(FlowLayout.CENTER));
 		//setBackground(Color.yellow);
 		setVisible(false);

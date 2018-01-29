@@ -31,29 +31,31 @@ public class PanelTool extends JPanel{
 		FlowLayout fl = new FlowLayout();
 		fl.setHgap(0);
 		fl.setVgap(0);
-		setPreferredSize(new Dimension(45,725));
+		setPreferredSize(W.panelToolsDim);
+		
 		setLayout(fl);
 		ImageIcon ikona;
 
 		
 		p_tools = new JPanel();
 		p_tools.setLayout(fl);
-		p_tools.setPreferredSize(new Dimension(45,725));
+		p_tools.setPreferredSize(W.panelToolsDim);
 		
 		
 		JPanel panelCapo = new JPanel();
-		panelCapo.setPreferredSize(new Dimension(45,140));
+		panelCapo.setPreferredSize(W.panelCapo);
 		panelCapo.setLayout(new FlowLayout());
 		JLabel c = new JLabel("Capo:",SwingConstants.CENTER);
-		c.setPreferredSize(new Dimension(45,20));
+		c.setFont(c.getFont().deriveFont(W.fontSize12));
+		c.setPreferredSize(W.labelCapoNapis);
 		capo = new JLabel("0",SwingConstants.CENTER);
-		capo.setFont(capo.getFont().deriveFont(36f));
-		capo.setPreferredSize(new Dimension(45,35));
+		capo.setFont(capo.getFont().deriveFont(W.fontSize36));//36f
+		capo.setPreferredSize(W.labelCapoValue);
 		ikona = new ImageIcon(getClass().getResource("/up.png"));
 		JButton cup = new JButton(ikona);
 		cup.setToolTipText(Const.TIP_CAPOUP);
 		cup.setFocusable(false);
-		cup.setPreferredSize(new Dimension(35, 20));
+		cup.setPreferredSize(W.buutonHalf);
 		cup.addActionListener( new ActionListener()
 	    {
 	        public void actionPerformed(ActionEvent e)
@@ -65,7 +67,7 @@ public class PanelTool extends JPanel{
 		JButton cdo = new JButton(ikona);
 		cdo.setToolTipText(Const.TIP_CAPODOWN);
 		cdo.setFocusable(false);
-		cdo.setPreferredSize(new Dimension(35, 20));
+		cdo.setPreferredSize(W.buutonHalf);
 		cdo.addActionListener( new ActionListener()
 	    {
 	        public void actionPerformed(ActionEvent e)
@@ -81,14 +83,15 @@ public class PanelTool extends JPanel{
 		
 		
 		JPanel panelTranspose = new JPanel();
-		panelTranspose.setPreferredSize(new Dimension(45,105));
+		panelTranspose.setPreferredSize(W.panelTranspose);
 		JLabel t = new JLabel("Ton:",SwingConstants.CENTER);
-		t.setPreferredSize(new Dimension(45,20));
+		t.setFont(t.getFont().deriveFont(W.fontSize12));
+		t.setPreferredSize(W.labelTonNapis);
 		ikona = new ImageIcon(getClass().getResource("/up.png"));
 		JButton tup = new JButton(ikona);
 		tup.setToolTipText(Const.TIP_TONEUP);
 		tup.setFocusable(false);
-		tup.setPreferredSize(new Dimension(35, 20));
+		tup.setPreferredSize(W.buutonHalf);
 		tup.addActionListener( new ActionListener()
 	    {
 	        public void actionPerformed(ActionEvent e)
@@ -100,7 +103,7 @@ public class PanelTool extends JPanel{
 		JButton tdo = new JButton(ikona);
 		tdo.setToolTipText(Const.TIP_TONEDOWN);
 		tdo.setFocusable(false);
-		tdo.setPreferredSize(new Dimension(35, 20));
+		tdo.setPreferredSize(W.buutonHalf);
 		tdo.addActionListener( new ActionListener()
 	    {
 	        public void actionPerformed(ActionEvent e)
@@ -113,12 +116,12 @@ public class PanelTool extends JPanel{
 		panelTranspose.add(tdo);
 
 		JPanel panelUndo = new JPanel();
-	    panelUndo.setPreferredSize(new Dimension(45,95));
+	    panelUndo.setPreferredSize(W.panelUndo);
 	    ikona = new ImageIcon(getClass().getResource("/back.png"));
 		JButton undo = new JButton(ikona);
 		undo.setToolTipText(Const.TIP_UNDO);
 		undo.setFocusable(false);
-		undo.setPreferredSize(new Dimension(35,20));
+		undo.setPreferredSize(W.buutonHalf);
 		undo.addActionListener( new ActionListener()
 	    {
 	        public void actionPerformed(ActionEvent e)
@@ -129,31 +132,31 @@ public class PanelTool extends JPanel{
 	    panelUndo.add(undo);
 	   
 	    
-	    JPanel panelGroups = new JPanel();
-	    panelGroups.setPreferredSize(new Dimension(45,265));
+	    JPanel panelMenu = new JPanel();
+	    panelMenu.setPreferredSize(W.panelMenu);
 	    ikona = new ImageIcon(getClass().getResource("/note.png"));
 	    menuSong = new JButton(ikona);
 		menuSong.setToolTipText(Const.TIP_SONGMENU);
 		menuSong.setFocusable(false);
-		menuSong.setPreferredSize(new Dimension(35, 35));
+		menuSong.setPreferredSize(W.buttonAll);
 		menuSong.addActionListener( new ActionListener()
 		    {
 		        public void actionPerformed(ActionEvent e)
 		        {
 		        	//Dane.popMenu.menuGroupCheck.show(songGroups, 36, 0);
-		        	Dane.popMenu.songMenu.show(menuSong, 36, 0);
+		        	Dane.popMenu.songMenu.show(menuSong, W.menuSongX, W.menuSongY);
 		        }
 		    });
-		panelGroups.add(menuSong);
+		panelMenu.add(menuSong);
 	    
 		JPanel panelShare = new JPanel();
-		panelShare.setPreferredSize(new Dimension(45,65));
+		panelShare.setPreferredSize(W.panelShare);
 		
 	    ikona = new ImageIcon(getClass().getResource("/help.png"));
 		JButton help = new JButton(ikona);
 		help.setToolTipText("Jak korzystaæ");
 		help.setFocusable(false);
-		help.setPreferredSize(new Dimension(35, 35));
+		help.setPreferredSize(W.buttonAll);
 		help.addActionListener( new ActionListener()
 	    {
 	        public void actionPerformed(ActionEvent e)
@@ -166,7 +169,7 @@ public class PanelTool extends JPanel{
 		p_tools.add(panelCapo);
 		p_tools.add(panelTranspose);
 		p_tools.add(panelUndo);
-		p_tools.add(panelGroups);
+		p_tools.add(panelMenu);
 		p_tools.add(panelShare);
 		
 		p_tools.add(help);
@@ -180,7 +183,9 @@ public class PanelTool extends JPanel{
 			panelCapo.setBackground(c2);
 			panelTranspose.setBackground(c2);
 		    panelUndo.setBackground(c2);
-		    panelGroups.setBackground(c1);
+		    panelMenu.setBackground(c1);
+		    panelShare.setBackground(c2);
+		    this.setBackground(Color.YELLOW);
 		}
 	}
 
