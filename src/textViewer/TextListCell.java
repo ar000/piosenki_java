@@ -3,7 +3,6 @@ package textViewer;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.Rectangle;
 
 import javax.swing.JLabel;
@@ -11,44 +10,29 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.ListCellRenderer;
 
-import piosenki.Dane;
 import view.W;
 
 public class TextListCell extends JPanel implements ListCellRenderer<LineText>{
-
+	private static final long serialVersionUID = 1L;
+	
 	private JLabel line, chords;
 	Rectangle lin, cho, tmpRect;
 	int wys;
 	int odLewej, odPrawej, szer, odstep;
 	public TextListCell(){
-		Font f;
 		line = new JLabel();
 		chords = new JLabel();
 		line.setBackground(Color.WHITE);
 		Color color = new Color(248,248,255);
 		chords.setBackground(color);
-//		f = line.getFont();
-//		
-//		line.setFont(f.deriveFont(f.getStyle() & ~Font.BOLD));
-		
-//		line.setFont(Dane.oxygenFont);
-//		line.setFont(line.getFont().deriveFont(W.fontSizeL));
 		
 		line.setFont(W.textFont);
-		
-//		f = chords.getFont();
-//		chords.setFont(f.deriveFont(f.getStyle() & ~Font.BOLD));
-//		chords.setFont(Dane.chordFont);
-//		chords.setFont(chords.getFont().deriveFont(W.fontSizeL));
-		
 		chords.setFont(W.chordFont);
-		
-		Dane.textFont = chords.getFont();
+	//	Dane.textFont = chords.getFont();
 		
 		line.setOpaque(true);
 		chords.setOpaque(true);
 		
-		//wys = (int)(Dane.oxygenFont.getSize() * 1.3);
 		wys = (int)(line.getFont().getSize() * 1.3);
 		odLewej = 5;
 		odstep = wys/2;
@@ -66,7 +50,7 @@ public class TextListCell extends JPanel implements ListCellRenderer<LineText>{
 		add(line);
 		add(chords);
 		
-		szer = W.panelLeftDim.width;
+		szer = W.panelTextViewer.width;
 	}
 	
 
@@ -78,13 +62,13 @@ public class TextListCell extends JPanel implements ListCellRenderer<LineText>{
 		chords.setText(value.chords);
 		
 		if(value.getChords().trim().equals("") && value.getText().trim().equals(""))
-			setPreferredSize(new Dimension(400, 10));
+			setPreferredSize(new Dimension(400, (int) (wys*0.4)));
         else
         	setPreferredSize(new Dimension(400, wys));
 
 		
 		
-		int startX = (szer-(value.getLineWidth() + odstep + value.getChordWidth()))/2;
+	//	int startX = (szer-(value.getLineWidth() + odstep + value.getChordWidth()))/2;
 		
 		
 		tmpRect = new Rectangle(lin.x, lin.y, value.getLineWidth(), lin.height);

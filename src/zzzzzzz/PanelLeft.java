@@ -1,4 +1,4 @@
-package view;
+package zzzzzzz;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -23,16 +23,21 @@ import javax.swing.JTextArea;
 import javax.swing.ListSelectionModel;
 import javax.swing.border.Border;
 
+//import indexViewer.TableCell;
 import piosenki.Const;
 import piosenki.Current;
 import piosenki.Dane;
 import textViewer.TextListCell;
+import view.ActionsController;
+import view.W;
 
 public class PanelLeft extends JPanel{
 	private static final long serialVersionUID = 1L;
+	
+	/*
 	private ActionsController ac;
-	JTextArea text;
-	JList textList;
+	public JTextArea text;
+	public JList textList;
 	private JScrollPane scroll;
 	public PanelLeft(){
 		setPreferredSize(W.panelLeftDim);
@@ -152,4 +157,5 @@ public class PanelLeft extends JPanel{
 //		text.setText(t);
 //	}
 	
+*/
 }

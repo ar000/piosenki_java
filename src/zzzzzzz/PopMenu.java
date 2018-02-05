@@ -1,4 +1,4 @@
-package view;
+package zzzzzzz;
 
 import java.awt.Dimension;
 import java.awt.Font;
@@ -20,6 +20,7 @@ import javax.swing.plaf.basic.BasicCheckBoxMenuItemUI;
 import piosenki.Const;
 import piosenki.Logic;
 import textViewer.TextViewer;
+import view.W;
 
 public class PopMenu {
 
@@ -40,6 +41,7 @@ public class PopMenu {
 		menuGroup = new JPopupMenu();
 		songMenu = new JPopupMenu();
 		checkSubmenu = new JMenu("Grupy");
+		
 		groupSubmenu = new JMenu("WIÊCEJ");
 		
 		itemCheck = new ArrayList<JCheckBoxMenuItem>();
@@ -53,7 +55,9 @@ public class PopMenu {
 	}
 	public void createSongMenu(boolean ishide, boolean ostatnia){
 		songMenu.removeAll();
+		
 		hide = new JMenuItem("Przenieœ do ukrytych");
+		hide.setFont(hide.getFont().deriveFont(W.fontSize12));
 		hide.setToolTipText(Const.TIP_HIDE);
 		hide.addActionListener( new ActionListener()
 	    {
@@ -63,6 +67,7 @@ public class PopMenu {
 	        }
 	    });
 		 unhide = new JMenuItem("Przenieœ do bazy");
+		 unhide.setFont(unhide.getFont().deriveFont(W.fontSize12));
 		unhide.setToolTipText(Const.TIP_UNHIDE);
 		unhide.addActionListener( new ActionListener()
 	    {
@@ -73,18 +78,20 @@ public class PopMenu {
 	    });
 		unhide.setEnabled(false);
 		 edit = new JMenuItem("Edytuj piosenkê");
+		 edit.setFont(edit.getFont().deriveFont(W.fontSize12));
 		edit.setToolTipText(Const.TIP_EDITSONG);
 		edit.addActionListener( new ActionListener()
 	    {
 	        public void actionPerformed(ActionEvent e)
 	        {
-	        	L.clickEditSong();
+	        //	L.clickEditSong();
 	        	TextViewer.showEditor();
 	        }
 	    });
 		//TextViewer tv = new TextViewer(new Dimension(3,3));
 		// edit.addActionListener(TextViewer.ActionViewEdit());
 		 delete = new JMenuItem("Usuñ piosenkê");
+		 delete.setFont(delete.getFont().deriveFont(W.fontSize12));
 		 delete.setToolTipText(Const.TIP_DELETESONG);
 		 delete.addActionListener( new ActionListener()
 		    {
@@ -121,7 +128,7 @@ public class PopMenu {
 		songMenu.add(unhide);
 		songMenu.add(delete);
 		
-		
+		checkSubmenu.setFont(checkSubmenu.getFont().deriveFont(W.fontSize12));
 	}
 	
 	public  void createMenuGroupCheck(){
@@ -129,6 +136,7 @@ public class PopMenu {
 		checkSubmenu.removeAll();
 		
 		for(JCheckBoxMenuItem it : itemCheck){
+			it.setFont(it.getFont().deriveFont(W.fontSize12));
 			if(it.getText().equals(Const.ALL) || it.getText().equals(Const.HIDE)){
 				
 			}else{
@@ -148,55 +156,59 @@ public class PopMenu {
 		    });
 		}
 
-		
+		groupSubmenu.setFont(groupSubmenu.getFont().deriveFont(W.fontSize12));
 	}
 	
-	public  void createMenuGroup(){
-		menuGroup.removeAll();
-		groupSubmenu.removeAll();
-		int i = 0;
-		for(JMenuItem it : itemMenu){
-			it.setFont(new Font("Monospaced", Font.PLAIN, 12));
-			menuGroup.add(it);
-			it.addActionListener( new ActionListener()
-		    {
-		        public void actionPerformed(ActionEvent e)
-		        {
-		        	String cmd = e.getActionCommand();
-		        	
-		        	
-		        	L.clickGroupMenu(cmd);
-		        }
-		    });
-			
-			if(i==2)menuGroup.add(new JSeparator());
-			i++;
-		}
-		menuGroup.add(new JSeparator());
-		JMenuItem edit = new JMenuItem("EDYTUJ GRUPY");
-		edit.setToolTipText(Const.TIP_EDITGROUP);
-		edit.addActionListener( new ActionListener()
-	    {
-	        public void actionPerformed(ActionEvent e)
-	        {
-	        	L.clickEditGroup();
-	        }
-	    });
-		groupSubmenu.add(edit);
-		groupSubmenu.addSeparator();
-		JMenuItem export = new JMenuItem("EKSPORTUJ GRUPÊ");
-		export.setToolTipText(Const.TIP_GROUPEXPORT);
-		export.addActionListener( new ActionListener()
-	    {
-	        public void actionPerformed(ActionEvent e)
-	        {
-	        	L.clickShare();
-	        }
-	    });
-		groupSubmenu.add(export);
-		menuGroup.add(groupSubmenu);
-		//MenuScroller.setScrollerFor(menuGroup,30,100,3,0);
-	}
+//	public  void createMenuGroup(){
+//		menuGroup.removeAll();
+//		groupSubmenu.removeAll();
+//		int i = 0;
+//		for(JMenuItem it : itemMenu){
+//			it.setFont(new Font("Monospaced", Font.PLAIN, 12));
+//			it.setFont(it.getFont().deriveFont(W.fontSize12));
+//			
+//			menuGroup.add(it);
+//			it.addActionListener( new ActionListener()
+//		    {
+//		        public void actionPerformed(ActionEvent e)
+//		        {
+//		        	String cmd = e.getActionCommand();
+//		        	
+//		        	
+//		        	L.clickGroupMenu(cmd);
+//		        }
+//		    });
+//			
+//			if(i==2)menuGroup.add(new JSeparator());
+//			i++;
+//		}
+//		menuGroup.add(new JSeparator());
+//		JMenuItem edit = new JMenuItem("EDYTUJ GRUPY");
+//		edit.setFont(edit.getFont().deriveFont(W.fontSize12));
+//		edit.setToolTipText(Const.TIP_EDITGROUP);
+//		edit.addActionListener( new ActionListener()
+//	    {
+//	        public void actionPerformed(ActionEvent e)
+//	        {
+//	        	L.clickEditGroup();
+//	        }
+//	    });
+//		groupSubmenu.add(edit);
+//		groupSubmenu.addSeparator();
+//		JMenuItem export = new JMenuItem("EKSPORTUJ GRUPÊ");
+//		export.setFont(export.getFont().deriveFont(W.fontSize12));
+//		export.setToolTipText(Const.TIP_GROUPEXPORT);
+//		export.addActionListener( new ActionListener()
+//	    {
+//	        public void actionPerformed(ActionEvent e)
+//	        {
+//	        	L.clickShare();
+//	        }
+//	    });
+//		groupSubmenu.add(export);
+//		menuGroup.add(groupSubmenu);
+//		//MenuScroller.setScrollerFor(menuGroup,30,100,3,0);
+//	}
 	
 	
 	
@@ -216,7 +228,7 @@ public class PopMenu {
 		      return new MenuNotClosed();
 		   }
 		
-}
+	}
 	
 	
 }

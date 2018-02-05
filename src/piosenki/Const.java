@@ -1,7 +1,5 @@
 package piosenki;
 
-import java.awt.Dimension;
-
 public class Const {
 
 	public static final int ILE_MAX_GRUP = 34;
@@ -37,12 +35,21 @@ public class Const {
 	public static final String TIP_GROUPNAME = "<html>nazwa aktualnie wyœwietlanej<br>grupy piosenek</html>";
 	public static final String TIP_GROUPEXPORT = "eksportuj piosenki z bie¿¹cej grupy do pliku (np. w celu udostêpnienia)";
 	
+	public static final String SEARCHINFO = "Wpisz wyszukiwany tekst. Bez polskich liter.";
+	
 	public static final String STARTINFO = "Program do obs³ugi bazy piosenek \n"
 			+ "z udogodnieniami do zmiany tonacji \n\n"
 			+ "Wymyœli³ o wykona³: Adam Ruciñski.\n\n\n\n"
 			+ "kliknij tytu³ na liœcie z prawej strony...";
 	
+	public static final String EDITINFO = "<html>Zaznacz tekst w lewym oknie i kliknij odpowiedni przycisk.<br>"
+			+ "lub wpisz tekst w pole edycji</html>";
 
+	public static final String EDITHELP = "<html>Tekst, który ma byæ wyœwietlany w g³ównym oknie,<br>"
+			+ "powinien zaczynaæ siê od trzeciej linijki.<br>Dwie pierwsze mog¹ zawieraæ cokolwiek,<br>"
+			+"bêd¹ ignorowane.<br><br>"
+			+"F1 - wstawia pionow¹ kreskê<br> &emsp&emsp - dodaæ przed akordami w ka¿dej linii<br><br>"
+			+"np. &emsp linijka tekstu &emsp&emsp&emsp&emsp |A C d7</html>"; 
 	
 //	public static final int WINDOW_WIDTH = 700;
 //	public static final Dimension PANEL_LEFT_DIM = new Dimension(550,725);

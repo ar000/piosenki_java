@@ -1,10 +1,11 @@
 package view;
 
+import java.util.List;
+
 import piosenki.Logic;
 import piosenki.LogicDrop;
 import piosenki.LogicEditGroups;
 import piosenki.LogicEditSong;
-import piosenki.LogicSong;
 
 public class ActionsController{
 	
@@ -12,7 +13,6 @@ public class ActionsController{
 	private LogicDrop ld;
 	private LogicEditGroups leg; 
 	private LogicEditSong les;
-	private LogicSong song;
 	
 	
 	public ActionsController(){
@@ -20,12 +20,11 @@ public class ActionsController{
 	}
 
 	public void init(Logic l, LogicDrop ld, LogicEditGroups leg, 
-			LogicEditSong les, LogicSong song) {
+			LogicEditSong les) {
 		this.l = l;
 		this.ld = ld;
 		this.leg = leg;
 		this.les = les;
-		this.song = song;
 	}
 
 	// DROP =======================================
@@ -45,22 +44,22 @@ public class ActionsController{
 		ld.clickGroupFromPackage();
 	}
 	//==============================================
-	public void clickTitleOnList(int index) {
-		l.clickTitleOnList(index);
-	}
+//	public void clickTitleOnList(int index) {
+//		l.clickTitleOnList(index);
+//	}
 //	public void clickSearchOnList(int index) {
 //		//l.clickSearchOnList(index);
 //	}
-	public void clickWordOnList(int index) {
-		l.clickWordOnList(index);
+	public void clickWordOnList(int index, List<Integer> indexes) {
+		l.clickWordOnList(index, indexes);
 	}
 
 	public void clickStartSearch(String text) {
-		l.clickStartSearch(text);
+		//l.clickStartSearch(text);
 	}
 
 	public void clickClearSearch() {
-		l.clickClearSearch();
+//		l.clickClearSearch();
 	}
 
 	public void clickEditGroup() {
@@ -79,24 +78,24 @@ public class ActionsController{
 //		//l.clickTabSearch();
 //	}
 
-	public void clickCapoUp() {
-		song.clickCapoUp();
+	public void xxxxxxxclickCapoUp() {
+	//	song.clickCapoUp();
 	}
 
-	public void clickCapoDown() {
-		song.clickCapoDown();
+	public void xxxxxxxxclickCapoDown() {
+	//	song.clickCapoDown();
 	}
 
-	public void clickToneUp() {
-		song.clickToneUp();
+	public void xxxxxxxxxxxclickToneUp() {
+	//	song.clickToneUp();
 	}
 
-	public void clickToneDown() {
-		song.clickToneDown();
+	public void xxxxxxxxxxxxxclickToneDown() {
+	//	song.clickToneDown();
 	}
 
-	public void clickUndo() {
-		song.clickUndo();
+	public void xxxxxxxxxxxxclickUndo() {
+	//	song.clickUndo();
 	}
 
 	public void clickShare() {

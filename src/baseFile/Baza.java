@@ -2,10 +2,8 @@ package baseFile;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import piosenki.Const;
 import piosenki.Plik;
-import piosenki.Stoper;
 
 public class Baza {
 	private static String myPath;
@@ -22,8 +20,8 @@ public class Baza {
 		
 	}
 	private static void openBase(){
-		Stoper s1 = new Stoper();
-		s1.Start();
+	//	Stoper s1 = new Stoper();
+	//	s1.Start();
 		teksty = new ArrayList<String>();
 		groups = new ArrayList<Group>();
 		List<String> zPliku = new ArrayList<String>();
@@ -59,7 +57,7 @@ public class Baza {
 			}
 			groups.add(new Group(r,ile,tempG));
 		}
-		s1.Stop("Open BAZA");
+	//	s1.Stop("Open BAZA");
 	}
 	public static boolean isSongOnGroup(String name, String title){
 		return groupObject(name).isSong(title);

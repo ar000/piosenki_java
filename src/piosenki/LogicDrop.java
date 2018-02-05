@@ -178,8 +178,8 @@ public class LogicDrop {
 		TextViewer.setText(titles);  //vc.setText(titles);
 		
 		
-		vc.showPanels(ViewController.PANELS.ADD);
-		vc.setWindowTitle("Dodawanie piosenek z zestawu:  \"" + shareName + "\"");
+	//	vc.showPanels(ViewController.PANELS.ADD);
+	//	vc.setWindowTitle("Dodawanie piosenek z zestawu:  \"" + shareName + "\"");
 	}
 	
 	private  void dropText(){
@@ -193,7 +193,7 @@ public class LogicDrop {
 		}
 		TextViewer.setText(t);   //vc.setTextString(sb.toString());
 		
-		vc.setWindowTitle("Dodawanie z pliku: "+path);
+	//	vc.setWindowTitle("Dodawanie z pliku: "+path);
 		Dane.editTitle = "";
 		Dane.editOrygTitle = "";
 		Dane.editAuthor = "";

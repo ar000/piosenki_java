@@ -21,13 +21,13 @@ public class LogicEditSong {
 		Dane.editLine2 = song.getLine2();
 		Dane.editCapo = String.valueOf(Dane.editCapo);
 		
-		vc.setCapoValue(Integer.valueOf(Dane.editCapo));
-		vc.showPanels(ViewController.PANELS.EDIT);
+//		vc.setCapoValue(Integer.valueOf(Dane.editCapo));
+	//	vc.showPanels(ViewController.PANELS.EDIT);
 		vc.setButtonSaveText("Zamieñ na t¹ wersjê");
 		if(Dane.isAdd) vc.setButtonSaveText("Dodaj piosenkê do bazy");
 		vc.saveAsEnabled(false);
 		if(Dane.isEdit){
-			vc.textToEdit();
+			//vc.textToEdit();
 		}
 		//vc.setEditClassToEditPanel(this);
 	}

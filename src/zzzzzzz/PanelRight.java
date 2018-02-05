@@ -1,4 +1,4 @@
-package view;
+package zzzzzzz;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -23,16 +23,20 @@ import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.ListSelectionModel;
 
+//import indexViewer.TableCell;
 import piosenki.Const;
 import piosenki.Dane;
+import view.ActionsController;
+import view.W;
 
 public class PanelRight extends JPanel{
 	private static final long serialVersionUID = 1L;
+	/*
 	JList listT, listW;
 	JScrollPane scrollTitle, scrollWords;
 	JTextArea searchField;
 	JLabel searchInfo;
-	JLabel groupName;
+	public JLabel groupName;
 	JPanel panelIndex;
 	int currentRowTT, currentRowTW, currentRowTS, currentRowTL;
 	private ActionsController ac;
@@ -128,7 +132,7 @@ public class PanelRight extends JPanel{
 	         }
 	         public void mouseReleased(MouseEvent e) {
 	        	 int index = listW.locationToIndex(e.getPoint());
-	        	 ac.clickWordOnList(index);
+	        	// ac.clickWordOnList(index);
 	        	 listT.clearSelection();
 		     }
 	      });
@@ -185,4 +189,5 @@ public class PanelRight extends JPanel{
 	public void clearSearchField(){
 		searchField.setText("");
 	}
+	*/
 }

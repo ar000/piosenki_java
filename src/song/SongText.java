@@ -7,7 +7,6 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
 
-import piosenki.Dane;
 import textViewer.LineText;
 import view.W;
 
@@ -18,6 +17,7 @@ public class SongText {
     private int capo, cCount, tCount;
     private String[] oryginalText;
     private String[] outText;
+    private String[] outTextToEdit;
     private String[] linesText;
     private Chord[][] myChords;
     private int linesCount;
@@ -51,6 +51,7 @@ public class SongText {
         capo = cap ;
         oryginalText = new String[linie.size()];
         outText = new String[linie.size()];
+        outTextToEdit = new String[linie.size()];
         for(int w = 0; w < linie.size(); w++){
             oryginalText[w] = linie.get(w);
         }
@@ -91,6 +92,7 @@ public class SongText {
     private void makeOut(){
         arrayLineText = new ArrayList<LineText>();
         StringBuilder sb = new StringBuilder();
+        StringBuilder sbtoedit = new StringBuilder();
         StringBuilder ch;
         String lineTrim;
         String chordLine;
@@ -99,6 +101,7 @@ public class SongText {
 
         for(int d = 0; d < linesCount; d++){
             sb.append(linesText[d]);
+            sbtoedit.append(linesText[d]);
             ch = new StringBuilder();
             if(myChords[d] != null){
                 for(int r = 0; r < myChords[d].length; r++){
@@ -111,7 +114,17 @@ public class SongText {
             chordLine = ch.toString();
             sb.append(chordLine);
 
-            if(d>1){
+            if(chordLine.length()>0){
+            	int ilesp = separatorPos[d] - linesText[d].length();
+	            for(int t = 0; t < ilesp; t++){
+	            	sbtoedit.append(" ");
+	            }
+	            sbtoedit.append("|");
+	            sbtoedit.append(chordLine);
+            }
+            
+            
+            if(d>3){
 
                 int w = getTextSize(chordLine, W.chordFont);
        
@@ -129,7 +142,7 @@ public class SongText {
                 }
             }
             lineTrim = linesText[d].substring(0,linesText[d].length()-ile);
-            if(d>1){
+            if(d>3){
               
                 int gw = getTextSize(lineTrim, W.textFont);
                 if (gw > maxWidthLine)
@@ -137,9 +150,12 @@ public class SongText {
             }
 
 
-            if(d>1)
+            if(d>3)
                 arrayLineText.add(new LineText(lineTrim,chordLine,maxWidthLine,maxWidthChord,screenW));
+            
             outText[d] = sb.toString();
+            outTextToEdit[d] = sbtoedit.toString();
+            sbtoedit.setLength(0);
             sb.setLength(0);
         }
 
@@ -233,7 +249,9 @@ public class SongText {
     public String[] getText(){
         return outText;
     }
-
+    public String[] getTextToEdit(){
+        return outTextToEdit;
+    }
     public String[] getOrygText(){
         return oryginalText;
     }
