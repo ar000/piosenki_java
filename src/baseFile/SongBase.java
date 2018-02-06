@@ -1,4 +1,4 @@
-package song;
+package baseFile;
 
 import java.text.Collator;
 import java.util.Arrays;
@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Locale;
 
 import piosenki.Const;
+import song.SongInfo;
 
 
 public class SongBase {

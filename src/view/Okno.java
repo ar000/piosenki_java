@@ -7,7 +7,7 @@ import javax.swing.JFrame;
 import editor.Editor;
 import groups.Groups;
 import indexViewer.Index;
-import piosenki.Logic;
+import piosenki.LogicOLD;
 import textViewer.TextViewer;
 import tools.Tools;
 
@@ -90,7 +90,7 @@ public class Okno  extends JFrame{
 		
 	}
 	
-	public void init(Logic L, ViewController vc, ActionsController ac){
+	public void init(LogicOLD L, ViewController vc, ActionsController ac){
 		//this.ac = ac;
 		//this.L =  L;
 		//this.vc = vc;

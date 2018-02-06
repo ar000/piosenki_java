@@ -6,7 +6,7 @@ import java.util.List;
 import baseFile.Baza;
 import groups.Groups;
 import indexViewer.Index;
-import piosenki.Dane;
+import piosenki.Const;
 import textViewer.TextViewer;
 import tools.Tools;
 
@@ -15,10 +15,12 @@ public class Editor {
 	private static PanelToolEdit panelToolEdit;
 	private static PanelTextEdit panelTextEdit;
 	private static String oldTitle, newTitle, info, line1, line2;
+	private static boolean  save = true;
 	private static boolean  saveas = false;
 	private static boolean  titleok = false;
 	private static boolean  line1ok = false;
 	private static boolean  line2ok = false;
+	private static boolean  duplicateTitle = false;
 	
 	public Editor(){
 		panelToolEdit = new PanelToolEdit();
@@ -31,16 +33,22 @@ public class Editor {
 		info = panelToolEdit.getInfo();
 	}
 	public static void changeTitle(){
+		duplicateTitle = false;
 		newTitle = panelToolEdit.getTitle();
 		if(newTitle.length()==0){
-			saveas = false;
 			titleok = false;
 		}else{
 			titleok = true;
-			if(!newTitle.equals(oldTitle)){
-				saveas = true;
-			}else{
+			if(newTitle.equals(oldTitle)){
 				saveas = false;
+			}else{
+				if(isUniqueTitle()){
+					saveas = true;
+				}else{
+					titleok = false;
+					duplicateTitle = true;
+				}
+				
 			}
 		}
 		analizeChange();
@@ -69,12 +77,13 @@ public class Editor {
 		panelToolEdit.setWarningLine1(!line1ok);
 		panelToolEdit.setWarningLine2(!line2ok);
 		if(titleok && line1ok && line2ok){
-			panelToolEdit.b_save.setEnabled(true);
+			panelToolEdit.b_save.setEnabled(save);
 			panelToolEdit.b_saveAs.setEnabled(saveas);
 		}else{
 			panelToolEdit.b_save.setEnabled(false);
 			panelToolEdit.b_saveAs.setEnabled(false);
 		}
+		panelToolEdit.setWarningSameTitle(duplicateTitle);
 	}
 	
 	
@@ -95,38 +104,79 @@ public class Editor {
 		panelToolEdit.setLine2(panelTextEdit.textArea.getSelectedText().trim());
 	}
 	
-	public static void clickSave(){
-		System.out.println("SAVE!!!");
-		if(newTitle.equals(oldTitle)){
-			System.out.println("równe tytu³y");
-			String lineSong = makeSongLine();
-			for(int i = 0; i<Baza.groups.size(); i++){
-				if(Baza.isSongOnGroup(Baza.groups.get(i).getName(),oldTitle)){
-					Baza.removeSongLine(Baza.groups.get(i).getName(), oldTitle);
-					Baza.addSongLine(Baza.groups.get(i).getName(), lineSong);
-				}
+	private static boolean isUniqueTitle(){
+			if(Baza.isSongOnGroup(Const.ALL,newTitle) 
+					|| Baza.isSongOnGroup(Const.HIDE,newTitle)){
+				return false;
+			}else{
+				return true;
 			}
-			Baza.removeSongText(oldTitle);
-			List<String> tekst = new ArrayList<String>();
-			tekst.add(newTitle);
-			tekst.add(info);
-			tekst.add(panelToolEdit.getCapo()+"p");
-			tekst.add("");
-			tekst.addAll(panelTextEdit.getTextFromEdit());
-			
-			
-			Baza.writeSongText(tekst, newTitle);
-			Baza.saveBase();
-			Groups.setGroup(Groups.grupa);
-//			TextViewer.clickTitle(newTitle);
-//			Index.setMarkTitle(newTitle);
-			Index.virtualClickTitle(newTitle);
-			clickCancel();
-		}else{
-			//czy jest wbazie taki tytul?
-			System.out.println("ró¿ne tytu³y");
+	}
+	
+	public static void clickSave(){
+		System.out.println("SAVE.");
+		
+		save();
+		
+//		if(newTitle.equals(oldTitle)){
+//			System.out.println("SAVE równe tytu³y");
+//			//deleteOld();
+//			save();
+//		}else{
+//			System.out.println("SAVE inne tytu³y");
+//			if(isUniqueTitle()){
+//				System.out.println("SAVE inne tytu³y ale unikalny");
+//				//deleteOld();
+//				save();
+//			}else{
+//				System.out.println("SAVE inne tytu³y i ju¿ taki jest");
+//			}
+//		}
+	}
+	
+	private static void save(){
+		deleteOldSaveNewLineText();
+		Baza.removeSongText(oldTitle);
+		Baza.writeSongText(makeSongTextToSave(), newTitle);
+		postSave();
+	}
+	public static void clickSaveAs(){
+		saveNewLineText();
+		Baza.writeSongText(makeSongTextToSave(), newTitle);
+		postSave();
+	}	
+	private static void saveNewLineText(){
+		for(int i = 0; i<Baza.groups.size(); i++){
+			if(Baza.isSongOnGroup(Baza.groups.get(i).getName(),oldTitle)){
+				Baza.addSongLine(Baza.groups.get(i).getName(), makeSongLine());
+			}
 		}
 	}
+	private static void deleteOldSaveNewLineText(){
+		for(int i = 0; i<Baza.groups.size(); i++){
+			if(Baza.isSongOnGroup(Baza.groups.get(i).getName(),oldTitle)){
+				Baza.removeSongLine(Baza.groups.get(i).getName(), oldTitle);
+				Baza.addSongLine(Baza.groups.get(i).getName(), makeSongLine());
+			}
+		}
+	}
+	private static void postSave(){
+		Baza.saveBase();
+		Groups.setGroup(Groups.grupa);//robi tez menugrup
+		//Groups.createMenu();
+		Index.virtualClickTitle(newTitle);
+		clickCancel();
+	}
+	private static List<String> makeSongTextToSave(){
+		List<String> tekst = new ArrayList<String>();
+		tekst.add(newTitle);
+		tekst.add(info);
+		tekst.add(panelToolEdit.getCapo()+"p");
+		tekst.add("");
+		tekst.addAll(panelTextEdit.getTextFromEdit());
+		return tekst;
+	}
+	
 	
 	private static String makeSongLine(){
 		StringBuilder lineSong = new StringBuilder();
@@ -141,16 +191,18 @@ public class Editor {
 		lineSong.append(panelToolEdit.getCapo());
 		return lineSong.toString();
 	}
-	public static void clickSaveAs(){
-		
-	}
+
 	
 	public static void clickCancel(){
-		TextViewer.showViewer();
+		TextViewer.show();
 		Groups.show();
 		Index.show();
 		Editor.hide();
 		Tools.show();
+	}
+	
+	public static void editCurrentSong(){
+		setTextToEdit(TextViewer.songText.getTextToEdit());
 	}
 	
 	public static void setTextToEdit(String[] text){
@@ -169,7 +221,7 @@ public class Editor {
 		panelToolEdit.setInfo(text[1]);
 		panelToolEdit.setLine1(TextViewer.songInfo.getLine1());
 		panelToolEdit.setLine2(TextViewer.songInfo.getLine2());
-		panelToolEdit.setCapo(TextViewer.songText.getCapo());
+		panelToolEdit.setCapo(String.valueOf(TextViewer.songInfo.getCapo()));
 		
 		//panelToolEdit.b_save.setEnabled(true);
 		panelToolEdit.b_saveAs.setEnabled(false);

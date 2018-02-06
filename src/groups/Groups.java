@@ -4,10 +4,9 @@ import javax.swing.JMenuItem;
 
 import baseFile.Baza;
 import baseFile.Group;
+import baseFile.SongBase;
 import indexViewer.Index;
 import piosenki.Const;
-import piosenki.Dane;
-import song.SongBase;
 import textViewer.TextViewer;
 import view.W;
 
@@ -22,9 +21,9 @@ public class Groups {
 	public Groups(){
 		pg = new PanelGroups();
 		new GroupsMenu();
-		createMenu();
+		//createMenu();
 	}
-	public static void createMenu(){
+	private static void createMenu(){
 		groupsMaxSize();
 		GroupsMenu.itemMenu.clear();
 		JMenuItem item;
@@ -95,10 +94,11 @@ public class Groups {
 		
 		pg.groupName.setText(grupa);
 		
-		Dane.songBase = new SongBase(Baza.getSongListFromGroup(grupa));
+		Baza.songBase = new SongBase(Baza.getSongListFromGroup(grupa));
 		Index.search("");
 //		TextViewer.clickTitle(Index.titlesNoHtm.get(0));
 //		Index.setMarkTitle(Index.titlesNoHtm.get(0));
+		createMenu();
 	}
 	
 	public static void show(){
@@ -113,7 +113,8 @@ public class Groups {
 		GroupsMenu.menuGroup.show(pg.gru, W.menuGrupX, W.menuGrupY);
 	}
 	public static void clickGroupMenu(String cmd){
-		setGroup(cmd.substring(substringIndexForMenu));		
+		setGroup(cmd.substring(substringIndexForMenu));	
+		Index.setMarkTitle(TextViewer.title); //po wybraniu nowej grupy, zaznacza na niej aktualny tytul
 	//	viewCurrentGroup();
 	//	viewTitle(Current.title);
 	}

@@ -18,13 +18,13 @@ import javax.swing.plaf.ComponentUI;
 import javax.swing.plaf.basic.BasicCheckBoxMenuItemUI;
 
 import piosenki.Const;
-import piosenki.Logic;
+import piosenki.LogicOLD;
 import textViewer.TextViewer;
 import view.W;
 
 public class PopMenu {
 
-	private  Logic L;
+	private  LogicOLD L;
 	//public  JPopupMenu menuGroupCheck;
 	public  JPopupMenu menuGroup;
 	public  JPopupMenu songMenu;
@@ -50,7 +50,7 @@ public class PopMenu {
 		
 	}
 	
-	public void sendTo(Logic L){
+	public void sendTo(LogicOLD L){
 		this.L = L;
 	}
 	public void createSongMenu(boolean ishide, boolean ostatnia){
@@ -85,7 +85,7 @@ public class PopMenu {
 	        public void actionPerformed(ActionEvent e)
 	        {
 	        //	L.clickEditSong();
-	        	TextViewer.showEditor();
+	        	TextViewer.hide();
 	        }
 	    });
 		//TextViewer tv = new TextViewer(new Dimension(3,3));
@@ -151,7 +151,7 @@ public class PopMenu {
 		        	String cmd = e.getActionCommand();
 		        	JCheckBoxMenuItem itt = (JCheckBoxMenuItem) e.getSource();
 		        	boolean k = itt.getState();
-		        	L.clickCheckMenu(cmd, k);
+		       // 	L.clickCheckMenu(cmd, k);
 		        }
 		    });
 		}

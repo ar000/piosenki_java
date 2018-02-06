@@ -7,9 +7,9 @@ import view.ViewController;
 
 public class LogicEditGroups {
 	ViewController vc;
-	Logic L;
+	LogicOLD L;
 	
-	public LogicEditGroups(Logic L, ViewController vc){
+	public LogicEditGroups(LogicOLD L, ViewController vc){
 		this.vc = vc;
 		this.L = L;
 	}
@@ -41,7 +41,7 @@ public class LogicEditGroups {
 		for(String h : Dane.editLog){
 			s[i++] = h;
 		}
-		TextViewer.setText(s);  //vc.setText(s);
+	//	TextViewer.setText(s);  //vc.setText(s);
 		if(Baza.groups.size() == Const.ILE_MAX_GRUP) 
 			vc.setAddGroupEnabled(false);
 		else

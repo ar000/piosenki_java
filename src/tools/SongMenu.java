@@ -65,9 +65,7 @@ public class SongMenu {
 	    {
 	        public void actionPerformed(ActionEvent e)
 	        {
-	        //	L.clickEditSong();
 	        	Tools.clickEdit();
-	        	
 	        }
 	    });
 		//TextViewer tv = new TextViewer(new Dimension(3,3));
@@ -130,10 +128,10 @@ public class SongMenu {
 		    {
 		        public void actionPerformed(ActionEvent e)
 		        {
-//		        	String cmd = e.getActionCommand();
-//		        	JCheckBoxMenuItem itt = (JCheckBoxMenuItem) e.getSource();
-//		        	boolean k = itt.getState();
-		     //   	L.clickCheckMenu(cmd, k);
+		        	String cmd = e.getActionCommand();
+		        	JCheckBoxMenuItem itt = (JCheckBoxMenuItem) e.getSource();
+		        	boolean k = itt.getState();
+		        	Tools.clickGroupCheckMenu(cmd, k);
 		        }
 		    });
 		}

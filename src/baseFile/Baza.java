@@ -12,6 +12,7 @@ public class Baza {
 	public static boolean viewNewest;
 	public static List<String> teksty;
 	public static List<Group> groups;
+	public static SongBase songBase;
 	
 	public Baza(String path){
 		

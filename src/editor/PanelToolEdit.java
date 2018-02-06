@@ -6,8 +6,6 @@ import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
@@ -22,7 +20,6 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
 import piosenki.Const;
-import piosenki.Dane;
 import view.W;
 
 public class PanelToolEdit extends JPanel{
@@ -35,7 +32,6 @@ public class PanelToolEdit extends JPanel{
 	public JButton b_save;
 	public JButton b_saveAs;
 	private JTextArea title, info, line1, line2;
-	private int capo;
 	
 	
 	public PanelToolEdit(){
@@ -281,7 +277,7 @@ public class PanelToolEdit extends JPanel{
 		
 		l_info = new JLabel("Taki tytu³ ju¿ istnieje, wpisz inny");
 		l_info.setBounds(W.panelEditLabelInfoSave);
-		l_info.setFont(l_info.getFont().deriveFont(W.fontSize12));
+		l_info.setFont(l_info.getFont().deriveFont(W.fontSize14));
 		l_info.setForeground(Color.RED);
 		b_saveAs = new JButton("Zapisz jako now¹");
 		b_saveAs.setFocusable(false);
@@ -351,6 +347,11 @@ public class PanelToolEdit extends JPanel{
 		setVisible(false);
 		
 	}
+	
+	public void setWarningSameTitle(boolean stan){
+		l_info.setVisible(stan);
+	}
+	
 	public void setLine2(String value){
 		line2.setText(value);
 	}

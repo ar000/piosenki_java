@@ -20,9 +20,31 @@ public class Tools {
 		new SongMenu();
 		
 	}
+	public static void clickGroupCheckMenu(String name, boolean state){
+		if(state){
+			StringBuilder lineSong = new StringBuilder();
+			lineSong.append(TextViewer.songInfo.getTitle());
+			lineSong.append("/");
+			lineSong.append(TextViewer.songInfo.getAuthor());
+			lineSong.append("/");
+			lineSong.append(TextViewer.songInfo.getLine1());
+			lineSong.append("/");
+			lineSong.append(TextViewer.songInfo.getLine2());
+			lineSong.append("/");
+			lineSong.append(TextViewer.songInfo.getCapo());
+			Baza.addSongLine(name, lineSong.toString());
+		}else{
+			Baza.removeSongLine(name, TextViewer.title);
+		}
+		Baza.saveBase();
+		Groups.setGroup(Groups.grupa);//robi tez menugrup
+		//Groups.createMenu();
+		Index.virtualClickTitle(TextViewer.title);
+	}
 	
 	public static void clickEdit(){
-		TextViewer.showEditor();
+		Editor.editCurrentSong();
+		TextViewer.hide();
 		Groups.hide();
 		Index.hide();
 		Editor.show();
@@ -56,7 +78,7 @@ public class Tools {
 		SongMenu.itemCheck.clear();
 		boolean b = false;
 		for(Group g : Baza.groups){
-			b = (Baza.isSongOnGroup(g.getName(), TextViewer.currentTitle));
+			b = (Baza.isSongOnGroup(g.getName(), TextViewer.title));
 			if(g.getName().equals(Const.NEWEST) && !b){
 				tt = new JCheckBoxMenuItem(g.getName(),b);
 				tt.setEnabled(false);

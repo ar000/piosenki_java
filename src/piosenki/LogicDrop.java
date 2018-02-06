@@ -6,6 +6,7 @@ import java.util.List;
 import javax.swing.JOptionPane;
 
 import baseFile.Baza;
+import editor.Editor;
 import song.SongInfo;
 import textViewer.TextViewer;
 import view.ViewController;
@@ -14,13 +15,13 @@ public class LogicDrop {
 
 	private  ViewController vc;
 	private  String path;
-	private  Logic L;
+	private  LogicOLD L;
 	private String shareName;
 	private List<String> songEx;
 	private List<String> songOk;
 	private List<String> songAll;
 	
-	public LogicDrop(Logic lo, ViewController vc){
+	public LogicDrop(LogicOLD lo, ViewController vc){
 		this.vc = vc;
 		L = lo;
 	}
@@ -175,7 +176,7 @@ public class LogicDrop {
 			titles[a++] = d;
 		}
 		
-		TextViewer.setText(titles);  //vc.setText(titles);
+		Editor.setTextToEdit(titles);  //vc.setText(titles);
 		
 		
 	//	vc.showPanels(ViewController.PANELS.ADD);
@@ -191,25 +192,25 @@ public class LogicDrop {
 			//sb.append(textLines.get(tx));
 			//sb.append('\n');
 		}
-		TextViewer.setText(t);   //vc.setTextString(sb.toString());
+		Editor.setTextToEdit(t);   //vc.setTextString(sb.toString());
 		
 	//	vc.setWindowTitle("Dodawanie z pliku: "+path);
-		Dane.editTitle = "";
-		Dane.editOrygTitle = "";
-		Dane.editAuthor = "";
-		Dane.editLine1 = "";
-		Dane.editLine2 = "";
-		Dane.editCapo = "0";
+//		Dane.editTitle = "";
+//		Dane.editOrygTitle = "";
+//		Dane.editAuthor = "";
+//		Dane.editLine1 = "";
+//		Dane.editLine2 = "";
+//		Dane.editCapo = "0";
 		vc.postAddTextFile();
-		vc.saveAsEnabled(false);
+	//	vc.saveAsEnabled(false);
 		SongInfo si = new SongInfo();
 		si.setTitle("");
 		si.setAuthor("");
 		si.setLine1("");
 		si.setLine2("");
 		si.setCapo(0);
-		Dane.isAdd = true;
-		Dane.isEdit = false;
+//		Dane.isAdd = true;
+//		Dane.isEdit = false;
 		L.newSongToEdit(si);
 	}
 }

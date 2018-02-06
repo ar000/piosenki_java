@@ -5,40 +5,37 @@ import java.util.List;
 
 import javax.swing.table.DefaultTableModel;
 
-import song.SongBase;
+import baseFile.SongBase;
 import song.SongInfo;
 import textViewer.LineText;
 
 public class Dane {
 
 	public static DefaultTableModel  tabelaPackage, modelEditGroups;
-	//public static DefaultTableModel tabelaT, tabelaW, tabelaS, tabelaG, tabT, tabW;
-	//public static DefaultListModel modelListT, modelListW, modelTextList;
-	public static List<LineText> linesText;;
-	//public static List<String> titlesNoHtml;
-	public static List<String> titlesNewSong, editLog, newBaseFile;
-	
-//	public static PopMenu popMenu;
+	public static List<String> titlesNewSong;
+	public static List<String> editLog;
+	public static List<String> newBaseFile;
 	public static int maxGroupSize;
 	public static int substringIndexForMenu;
-	
 	public static String path;
 	public static String pathDelete;
 	public static String pathIndex;
-	
-	public static String editTitle, editOrygTitle, editAuthor, editLine1, editLine2, editCapo;
-	public static boolean isEdit, isAdd;
-//	public static String helpAdd;
-	
-	public static SongBase songBase;
+	//public static SongBase songBase;
 	public static SongInfo currentSong;
-	//public static SongText currentText;
 	
+	
+//	public static boolean isEdit, isAdd;
+//	public static String editTitle, editOrygTitle, editAuthor, editLine1, editLine2, editCapo;
+	//public static DefaultTableModel tabelaT, tabelaW, tabelaS, tabelaG, tabT, tabW;
+	//public static DefaultListModel modelListT, modelListW, modelTextList;
+//	public static List<LineText> linesText;;
+	//public static List<String> titlesNoHtml;
+//	pubic static String helpAdd;
+//	public static PopMenu popMenu;
+	//public static SongText currentText;
 //	public static Font textFont, chordFont;
 //	public static Font oxygenFont;
-	
 	//public static boolean[] currentSongGroups;
-	
 //	public static List<JCheckBoxMenuItem> menuCheck;
 	
 	@SuppressWarnings("serial")

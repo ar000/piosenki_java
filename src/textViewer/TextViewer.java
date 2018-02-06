@@ -5,8 +5,9 @@ import java.util.List;
 import javax.swing.DefaultListModel;
 
 import baseFile.Baza;
-import editor.Editor;
-import piosenki.Dane;
+//import editor.Editor;
+//import piosenki.Dane;
+import piosenki.Logic;
 import song.SongInfo;
 import song.SongText;
 import tools.Tools;
@@ -20,15 +21,15 @@ public class TextViewer{
 	private static DefaultListModel<LineText> model;
 	public static SongText songText;
 	public static SongInfo songInfo;
-	public static String currentTitle;
-	private static Okno okno;
+	public static String title;
+//	private static Okno okno;
 	
 	public TextViewer(){
 		model = new DefaultListModel<LineText>();
 		textViewer = new PanelText(model);
 		
 		panelTranspose = new PanelTranspose();
-		showViewer();
+		show();
 	}
 	
 	public static void setSong(SongInfo si){
@@ -57,7 +58,7 @@ public class TextViewer{
 		showText();
 	}
 	public static void showTitle(String title){
-		setSong(Dane.songBase.getSongFromTitle(title));
+		setSong(Baza.songBase.getSongFromTitle(title));
 		showText();
 	}
 	
@@ -78,28 +79,29 @@ public class TextViewer{
 			tyt.append("...");
 		tyt.append(" >");
 		
-		okno.setTitle(tyt.toString());
-		currentTitle = songText.getTitle();
+		//okno.setTitle(tyt.toString());
+		Logic.setWindowTitle(tyt.toString());
+		
+		title = songText.getTitle();
 		Tools.createSongMenu();
 
 		
-		setTextEdit();
+//		Editor.setTextToEdit(songText.getTextToEdit());
 	}
 	
-	public static void setTextEdit(){
-		String[] t = songText.getTextToEdit();
-		setText(t);
-	}
+//	private static void setTextEdit(){
+//		
+//	}
 	
-	public static void setText(String[] t){
-		Editor.setTextToEdit(t);
-	}
+//	public static void setText(String[] t){
+//		Editor.setTextToEdit(t);
+//	}
 	
-	public static void showEditor(){
+	public static void hide(){
 		panelTranspose.setVisible(false);
 		textViewer.setVisible(false);
 	}
-	public static void showViewer(){
+	public static void show(){
 		textViewer.setVisible(true);
 		panelTranspose.setVisible(true);
 	}
@@ -109,9 +111,9 @@ public class TextViewer{
 	public static PanelTranspose getPanelTool(){
 		return panelTranspose;
 	}
-	public static void setWindow(Okno o){
-		okno = o;
-	}
+//	public static void setWindow(Okno o){
+//	//	okno = o;
+//	}
 	
 	
 //	public static ActionShowEdit ActionViewEdit(){

@@ -152,7 +152,6 @@ public class PanelIndex extends JPanel {
 	            listT.setModel(t);
 	            listW.setModel(w);
 	            listT.setSelectedIndex(0);
-	            Index.setCursorWait(false);
 	        }
 	    });
 	}

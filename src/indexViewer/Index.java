@@ -1,14 +1,13 @@
 package indexViewer;
 
-import java.awt.Cursor;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.DefaultListModel;
 
+import baseFile.Baza;
 import piosenki.Dane;
 import textViewer.TextViewer;
-import view.Okno;
 
 public class Index {
 
@@ -18,7 +17,7 @@ public class Index {
 	private static List<Integer> indexes = new ArrayList<>();
 	public static List<String> titlesNoHtm = new ArrayList<>();
 	public static boolean szukam = false;
-	private static Okno okno;
+//	private static Okno okno;
 	public static String firstTitle = "";
 	
 	public Index(){
@@ -42,7 +41,7 @@ public class Index {
 		setMarkTitle(title);
 	}
 	public static void clickWord(int index){
-		String title = Dane.songBase.getSongFromWord(indexes.get(index)).getTitle();
+		String title = Baza.songBase.getSongFromWord(indexes.get(index)).getTitle();
 		iv.setTitleSelection(titlesNoHtm.indexOf(title));
 		TextViewer.showTitle(title);
 		
@@ -76,8 +75,8 @@ public class Index {
         indexes.clear();
         
         int ii;
-        String[] f = Dane.songBase.getTitleList();
-        String[] w = Dane.songBase.getWordList();
+        String[] f = Baza.songBase.getTitleList();
+        String[] w = Baza.songBase.getWordList();
         
 		if(d.equals("")){
 			for(String title : f){
@@ -155,16 +154,7 @@ public class Index {
         return false;
     }
     
-    public static void setWindow(Okno o){
-    	okno = o;
-    }
-    
-    public static void setCursorWait(boolean b){
-    	if(b)
-    		okno.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-    	else
-    		okno.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
-    }
+   
     
     
     

@@ -151,7 +151,7 @@ public class W {
 		panelEditorSeparator = new Dimension(panelEditField.width, h(1.1));
 		panelEditSave = new Dimension(panelEditField.width, h(14.37));
 			panelEditButtonSave = new Rectangle(w(0.6), h(0.5), w(14), h(3.26));
-			panelEditLabelInfoSave = new Rectangle(w(0.59), h(4.96), w(21.96), h(3.26));
+			panelEditLabelInfoSave = new Rectangle(w(9.2), h(4.96), w(21.96), h(3.26));
 			panelEditButtonSaveAs = new Rectangle(w(19.1), h(0.5), w(14), h(3.26));
 			panelEditButtonCancel = new Rectangle(w(9.85), h(10.5), w(14), h(3.26));
 		panelEditHelp = new Dimension(panelEditField.width, h(35));
