@@ -124,7 +124,7 @@ public class SongText {
             }
             
             
-            if(d>3){
+            if(d>1){
 
                 int w = getTextSize(chordLine, W.chordFont);
        
@@ -142,7 +142,7 @@ public class SongText {
                 }
             }
             lineTrim = linesText[d].substring(0,linesText[d].length()-ile);
-            if(d>3){
+            if(d>1){
               
                 int gw = getTextSize(lineTrim, W.textFont);
                 if (gw > maxWidthLine)
@@ -150,7 +150,7 @@ public class SongText {
             }
 
 
-            if(d>3)
+            if(d>1)
                 arrayLineText.add(new LineText(lineTrim,chordLine,maxWidthLine,maxWidthChord,screenW));
             
             outText[d] = sb.toString();

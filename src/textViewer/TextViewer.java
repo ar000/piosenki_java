@@ -5,13 +5,14 @@ import java.util.List;
 import javax.swing.DefaultListModel;
 
 import baseFile.Baza;
+import editor.Editor;
+import piosenki.Const;
 //import editor.Editor;
 //import piosenki.Dane;
 import piosenki.Logic;
 import song.SongInfo;
 import song.SongText;
 import tools.Tools;
-import view.Okno;
 import view.W;
 
 public class TextViewer{
@@ -88,6 +89,20 @@ public class TextViewer{
 		
 //		Editor.setTextToEdit(songText.getTextToEdit());
 	}
+	
+	public static void dropFile(String path){
+		System.out.println("drop: "+path);
+		String ext = path.substring(path.length()-4);
+		if(ext.equalsIgnoreCase(".txt")){
+			Editor.newTextFile(path);
+		}else{
+			ext = path.substring(path.length()-3);
+			if(ext.equalsIgnoreCase(Const.EXTNEW)){
+				//dropBase();
+			}
+		}
+	}
+	
 	
 //	private static void setTextEdit(){
 //		

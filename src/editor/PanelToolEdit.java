@@ -31,6 +31,7 @@ public class PanelToolEdit extends JPanel{
 	public JLabel l_capo;
 	public JButton b_save;
 	public JButton b_saveAs;
+	public JButton b_saveNew;
 	private JTextArea title, info, line1, line2;
 	
 	
@@ -292,6 +293,21 @@ public class PanelToolEdit extends JPanel{
 	        	Editor.clickSaveAs();
 	        }
 	    });
+		
+		b_saveNew = new JButton("Dodaj piosenkê do bazy");
+		b_saveNew.setFocusable(false);
+		b_saveNew.setBounds(W.panelEditButtonSaveNew);
+		b_saveNew.setFont(b_saveAs.getFont().deriveFont(W.fontSize12));
+//		b_saveNew.setVisible(false);
+		b_saveNew.addActionListener( new ActionListener()
+	    {
+	        public void actionPerformed(ActionEvent e)
+	        {
+	        	Editor.clickSaveNewSong();
+	        }
+	    });
+		
+		
 		JButton b_exit = new JButton("Wyjdz bez zapisywania");
 		b_exit.setFocusable(false);
 		b_exit.setBounds(W.panelEditButtonCancel);
@@ -308,6 +324,7 @@ public class PanelToolEdit extends JPanel{
 		pSave.add(b_save);
 		pSave.add(l_info);
 		pSave.add(b_saveAs);
+		pSave.add(b_saveNew);
 		pSave.add(b_exit);
 		
 		JPanel sep2 = new JPanel();
@@ -346,6 +363,16 @@ public class PanelToolEdit extends JPanel{
 		
 		setVisible(false);
 		
+	}
+	public void setButtonsToEdit(){
+		b_save.setVisible(true);
+		b_saveAs.setVisible(true);
+		b_saveNew.setVisible(false);
+	}
+	public void setButtonsToNew(){
+		b_save.setVisible(false);
+		b_saveAs.setVisible(false);
+		b_saveNew.setVisible(true);
 	}
 	
 	public void setWarningSameTitle(boolean stan){

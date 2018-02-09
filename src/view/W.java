@@ -36,7 +36,7 @@ public class W {
 							panelEditFieldCapoPlus, panelEditFieldCapoMinus, panelEditFieldCapoLabel,
 							panelEditButtonSave, panelEditButtonSaveAs, panelEditButtonCancel, 
 							panelEditLabelInfoSave, panelEditLabelHelp, textEditTitle, textEditInfo, textEditText,
-							textEditTitleLabel, textEditInfoLabel;
+							textEditTitleLabel, textEditInfoLabel, panelEditButtonSaveNew;
 	
 	
 	double ww, hh;
@@ -153,6 +153,7 @@ public class W {
 			panelEditButtonSave = new Rectangle(w(0.6), h(0.5), w(14), h(3.26));
 			panelEditLabelInfoSave = new Rectangle(w(9.2), h(4.96), w(21.96), h(3.26));
 			panelEditButtonSaveAs = new Rectangle(w(19.1), h(0.5), w(14), h(3.26));
+			panelEditButtonSaveNew = new Rectangle(w(9.85), h(0.5), w(14), h(3.26));
 			panelEditButtonCancel = new Rectangle(w(9.85), h(10.5), w(14), h(3.26));
 		panelEditHelp = new Dimension(panelEditField.width, h(35));
 		panelEditLabelHelp = new Rectangle(w(0.59), h(1.04), w(32.5), h(33.1));

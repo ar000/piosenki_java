@@ -7,6 +7,7 @@ import baseFile.Baza;
 import groups.Groups;
 import indexViewer.Index;
 import piosenki.Const;
+import piosenki.Plik;
 import textViewer.TextViewer;
 import tools.Tools;
 
@@ -25,7 +26,6 @@ public class Editor {
 	public Editor(){
 		panelToolEdit = new PanelToolEdit();
 		panelTextEdit = new PanelTextEdit();
-		
 		
 	}
 	
@@ -79,9 +79,12 @@ public class Editor {
 		if(titleok && line1ok && line2ok){
 			panelToolEdit.b_save.setEnabled(save);
 			panelToolEdit.b_saveAs.setEnabled(saveas);
+			panelToolEdit.b_saveNew.setEnabled(saveas);
+			
 		}else{
 			panelToolEdit.b_save.setEnabled(false);
 			panelToolEdit.b_saveAs.setEnabled(false);
+			panelToolEdit.b_saveNew.setEnabled(false);
 		}
 		panelToolEdit.setWarningSameTitle(duplicateTitle);
 	}
@@ -115,23 +118,7 @@ public class Editor {
 	
 	public static void clickSave(){
 		System.out.println("SAVE.");
-		
 		save();
-		
-//		if(newTitle.equals(oldTitle)){
-//			System.out.println("SAVE równe tytu³y");
-//			//deleteOld();
-//			save();
-//		}else{
-//			System.out.println("SAVE inne tytu³y");
-//			if(isUniqueTitle()){
-//				System.out.println("SAVE inne tytu³y ale unikalny");
-//				//deleteOld();
-//				save();
-//			}else{
-//				System.out.println("SAVE inne tytu³y i ju¿ taki jest");
-//			}
-//		}
 	}
 	
 	private static void save(){
@@ -163,20 +150,14 @@ public class Editor {
 	private static void postSave(){
 		Baza.saveBase();
 		Groups.setGroup(Groups.grupa);//robi tez menugrup
-		//Groups.createMenu();
 		Index.virtualClickTitle(newTitle);
 		clickCancel();
 	}
 	private static List<String> makeSongTextToSave(){
 		List<String> tekst = new ArrayList<String>();
-		tekst.add(newTitle);
-		tekst.add(info);
-		tekst.add(panelToolEdit.getCapo()+"p");
-		tekst.add("");
 		tekst.addAll(panelTextEdit.getTextFromEdit());
 		return tekst;
 	}
-	
 	
 	private static String makeSongLine(){
 		StringBuilder lineSong = new StringBuilder();
@@ -191,7 +172,6 @@ public class Editor {
 		lineSong.append(panelToolEdit.getCapo());
 		return lineSong.toString();
 	}
-
 	
 	public static void clickCancel(){
 		TextViewer.show();
@@ -201,35 +181,88 @@ public class Editor {
 		Tools.show();
 	}
 	
-	public static void editCurrentSong(){
-		setTextToEdit(TextViewer.songText.getTextToEdit());
+	public static void newTextFile(String path){
+		List<String> lines = Plik.readFile(path);
+		String[] text = new String[lines.size()];
+		int x = 0;
+		for(String l : lines){
+			text[x++] = l;
+		}
+		
+		setNewTextToEdit(text);
+		
+		TextViewer.hide();
+		Groups.hide();
+		Index.hide();
+		Tools.hide();
+		Editor.show();
+		panelToolEdit.setButtonsToNew();
+		
 	}
-	
-	public static void setTextToEdit(String[] text){
+
+	private static void setNewTextToEdit(String[] text){
+		panelTextEdit.textArea.setText("");
 		StringBuilder sb= new StringBuilder();
-		for(int i = 4; i < text.length; i++){
+		for(int i = 0; i < text.length; i++){
 			sb.append(text[i]);
 			sb.append('\n');
 		}
 		panelTextEdit.textArea.setText(sb.toString());
+		
+			newTitle = text[0].trim();
+			oldTitle = "mIo*&^bh#..Ho))";
+			panelToolEdit.setTitle(text[0]);
+			panelToolEdit.setInfo(text[1]);
+			panelToolEdit.setLine1("");
+			panelToolEdit.setLine2("");
+			int c = 0;
+			try{
+				c = Integer.parseInt(text[2].substring(0, 1));
+			}catch(NumberFormatException n){
+				c = 0;
+			}
+			panelToolEdit.setCapo(String.valueOf(c));
+			panelTextEdit.textArea.setCaretPosition(0);
+		
+		panelToolEdit.b_saveAs.setEnabled(false);
+	}
+	
+	public static void clickSaveNewSong(){
+		Baza.addSongLine(Const.ALL, makeSongLine());
+		Baza.addSongLine(Const.NEWEST, makeSongLine());
+		Baza.writeSongText(makeSongTextToSave(), newTitle);
+		postSave();
+	}
+	
+	public static void editCurrentSong(){
+		setTextToEdit(TextViewer.songText.getTextToEdit());
+		panelToolEdit.setButtonsToEdit();
+	}
+	
+	public static void setTextToEdit(String[] text){
+		StringBuilder sb= new StringBuilder();
+		for(int i = 0; i < text.length; i++){
+			sb.append(text[i]);
+			sb.append('\n');
+		}
+		
+		panelTextEdit.textArea.setText(sb.toString());
 		panelTextEdit.textArea.setCaretPosition(0);
 		
-		oldTitle = text[0].trim();
+		oldTitle = TextViewer.songInfo.getTitle();
 		newTitle = oldTitle;
 		
-		panelToolEdit.setTitle(text[0]);
-		panelToolEdit.setInfo(text[1]);
+		panelToolEdit.setTitle(oldTitle);
+		panelToolEdit.setInfo(TextViewer.songInfo.getAuthor());
 		panelToolEdit.setLine1(TextViewer.songInfo.getLine1());
 		panelToolEdit.setLine2(TextViewer.songInfo.getLine2());
 		panelToolEdit.setCapo(String.valueOf(TextViewer.songInfo.getCapo()));
 		
-		//panelToolEdit.b_save.setEnabled(true);
 		panelToolEdit.b_saveAs.setEnabled(false);
 		panelToolEdit.setWarningLine1(false);
 		panelToolEdit.setWarningLine2(false);
 		panelToolEdit.setWarningTitle(false);
 	}
-	
 	public static PanelToolEdit getPanelToolEdit(){
 		return panelToolEdit;
 	}

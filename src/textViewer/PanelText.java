@@ -66,7 +66,8 @@ public class PanelText extends JPanel {
             		
                 }catch(Exception ex){}
 				String path = list.get(0).getPath();
-				System.out.println("drop: "+path);
+				
+				TextViewer.dropFile(path);
 			////////////	ac.dropFile(path);
 
 			}

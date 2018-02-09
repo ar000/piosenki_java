@@ -64,6 +64,7 @@ public class Okno  extends JFrame{
 		
 		add(TextViewer.getPanelText());
 		add(Editor.getPanelTextEdit());
+		//add(Editor.getPanelTextEdit());
 		//add(p_left);
 		add(TextViewer.getPanelTool());
 		

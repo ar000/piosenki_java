@@ -14,13 +14,15 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
 import javax.swing.border.Border;
+import javax.swing.text.DefaultEditorKit;
 
 import view.W;
 
 public class PanelTextEdit extends JPanel {
 	private static final long serialVersionUID = 1L;
 
-	JTextArea title, info, textArea;
+	JTextArea title, info;
+	JTextArea textArea;
 	
 	private JScrollPane scrollView;
 	
@@ -56,6 +58,7 @@ public class PanelTextEdit extends JPanel {
 	    
 		textArea = new JTextArea();
 		textArea.setEditable(true);
+		textArea.getDocument().putProperty(DefaultEditorKit.EndOfLineStringProperty, "\n");
 		textArea.setFont(new Font("monospaced", Font.PLAIN, 20));
 		textArea.setFont(textArea.getFont().deriveFont(W.fontSize12));
 	    textArea.setBorder(BorderFactory.createCompoundBorder(border, BorderFactory.createEmptyBorder(b,b,b,b)));
@@ -67,6 +70,11 @@ public class PanelTextEdit extends JPanel {
 	        		e.consume();
 	        		pressF1();
 	        	}
+	        	if(e.getKeyCode() == KeyEvent.VK_ENTER){
+	        		
+//	        	e.consume();
+//	        		pasteBR();
+	        	}
 	        }
 
 	        @Override
@@ -75,9 +83,13 @@ public class PanelTextEdit extends JPanel {
 
 	        @Override
 	        public void keyReleased(KeyEvent e) {
+//	        	if(e.getKeyCode() != KeyEvent.VK_UP && e.getKeyCode() != KeyEvent.VK_DOWN 
+//	        			&& e.getKeyCode() != KeyEvent.VK_RIGHT && e.getKeyCode() != KeyEvent.VK_LEFT){
+//	        	//	Editor.changeNewText();
+//	        	}
 	        }
 	    });
-	    
+
 		scrollView = new JScrollPane (textArea, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 	    scrollView.setBounds(W.textEditText);
 	    
@@ -92,11 +104,9 @@ public class PanelTextEdit extends JPanel {
 	private void pressF1(){
 		addSymbol("|");
 	}
-	
 	private void addSymbol(String s){
 		int position = -1;
 		position = textArea.getCaretPosition();
-		textArea.insert(s, position);
 		textArea.setCaretPosition(position);
 	}
 	public List<String> getTextFromEdit() {
