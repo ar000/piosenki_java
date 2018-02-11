@@ -5,9 +5,7 @@ import java.util.List;
 
 import javax.swing.table.DefaultTableModel;
 
-import baseFile.SongBase;
 import song.SongInfo;
-import textViewer.LineText;
 
 public class Dane {
 

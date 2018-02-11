@@ -25,7 +25,6 @@ import view.W;
 public class PanelToolEdit extends JPanel{
 
 	private static final long serialVersionUID = 1L;
-	//public JLabel l_title, l_author, l_words1, l_words2, l_capo;
 	private JLabel l_info;
 	private JLabel warningTitle, warningLine1, warningLine2;
 	public JLabel l_capo;
@@ -34,15 +33,14 @@ public class PanelToolEdit extends JPanel{
 	public JButton b_saveNew;
 	private JTextArea title, info, line1, line2;
 	
-	
 	public PanelToolEdit(){
+		
 		setBounds(W.panelEditor);
 		setLayout(new FlowLayout(FlowLayout.LEFT));
 		Border bf = BorderFactory.createEtchedBorder(EtchedBorder.LOWERED);
 		ImageIcon ikona;
 		JLabel l1 = new JLabel(Const.EDITINFO,SwingConstants.CENTER);
 		l1.setFont(l1.getFont().deriveFont(W.fontSize12));
-		//l1.setPreferredSize(W.labelInfoEdit);
 	
 		ikona = new ImageIcon(getClass().getResource("/uwaga.png"));
 		JPanel pTitle = new JPanel();
@@ -58,7 +56,6 @@ public class PanelToolEdit extends JPanel{
 	    {
 	        public void actionPerformed(ActionEvent e)
 	        {
-	        //	ac.clickEditTitle();
 	        	Editor.clickTitle();
 	        }
 	    });
@@ -101,7 +98,6 @@ public class PanelToolEdit extends JPanel{
 	    {
 	        public void actionPerformed(ActionEvent e)
 	        {
-	        //	ac.clickEditAuthor();
 	        	Editor.clickInfo();
 	        }
 	    });
@@ -140,7 +136,6 @@ public class PanelToolEdit extends JPanel{
 	    {
 	        public void actionPerformed(ActionEvent e)
 	        {
-	        	//ac.clickEditLine1();
 	        	Editor.clickWord1();
 	        }
 	    });
@@ -182,7 +177,6 @@ public class PanelToolEdit extends JPanel{
 	    {
 	        public void actionPerformed(ActionEvent e)
 	        {
-	        	//ac.clickEditLine2();
 	        	Editor.clickWord2();
 	        }
 	    });
@@ -229,7 +223,6 @@ public class PanelToolEdit extends JPanel{
 	        {
 	        	int cap = Integer.parseInt(l_capo.getText());
 	        	if(cap>0) cap--;
-	        	//Dane.editCapo = String.valueOf(cap);
 	        	l_capo.setText(String.valueOf(cap));
 	        }
 	    });
@@ -246,7 +239,6 @@ public class PanelToolEdit extends JPanel{
 	        {
 	        	int cap = Integer.parseInt((l_capo.getText()));
 	        	if(cap<9) cap++;
-	        	//Dane.editCapo = String.valueOf(cap);
 	        	l_capo.setText(String.valueOf(cap));
 	        }
 	    });
@@ -266,12 +258,10 @@ public class PanelToolEdit extends JPanel{
 		b_save.setFocusable(false);
 		b_save.setBounds(W.panelEditButtonSave);
 		b_save.setFont(b_save.getFont().deriveFont(W.fontSize12));
-	//	b_save.setEnabled(false);
 		b_save.addActionListener( new ActionListener()
 	    {
 	        public void actionPerformed(ActionEvent e)
 	        {
-	        	//ac.clickEditSavePostEdit();
 	        	Editor.clickSave();
 	        }
 	    });
@@ -284,12 +274,10 @@ public class PanelToolEdit extends JPanel{
 		b_saveAs.setFocusable(false);
 		b_saveAs.setBounds(W.panelEditButtonSaveAs);
 		b_saveAs.setFont(b_saveAs.getFont().deriveFont(W.fontSize12));
-	//	b_saveAs.setEnabled(false);
 		b_saveAs.addActionListener( new ActionListener()
 	    {
 	        public void actionPerformed(ActionEvent e)
 	        {
-	        	//ac.clickEditSaveAs();
 	        	Editor.clickSaveAs();
 	        }
 	    });
@@ -298,7 +286,6 @@ public class PanelToolEdit extends JPanel{
 		b_saveNew.setFocusable(false);
 		b_saveNew.setBounds(W.panelEditButtonSaveNew);
 		b_saveNew.setFont(b_saveAs.getFont().deriveFont(W.fontSize12));
-//		b_saveNew.setVisible(false);
 		b_saveNew.addActionListener( new ActionListener()
 	    {
 	        public void actionPerformed(ActionEvent e)
@@ -316,8 +303,6 @@ public class PanelToolEdit extends JPanel{
 	    {
 	        public void actionPerformed(ActionEvent e)
 	        {
-	        	//ac.clickEditCancel();
-	        	
 	        	Editor.clickCancel();
 	        }
 	    });
@@ -363,6 +348,8 @@ public class PanelToolEdit extends JPanel{
 		
 		setVisible(false);
 		
+		
+		
 	}
 	public void setButtonsToEdit(){
 		b_save.setVisible(true);
@@ -405,7 +392,6 @@ public class PanelToolEdit extends JPanel{
 	}
 	public void setCapo(String value){
 		l_capo.setText(value);
-		//capo = Integer.parseInt(value);
 	}
 	public String getCapo(){
 		return l_capo.getText();

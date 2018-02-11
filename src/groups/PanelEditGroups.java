@@ -1,4 +1,4 @@
-package view;
+package groups;
 
 import java.awt.Color;
 import java.awt.FlowLayout;
@@ -18,6 +18,8 @@ import javax.swing.SwingConstants;
 import javax.swing.table.TableColumn;
 
 import piosenki.Dane;
+import view.ActionsController;
+import view.W;
 
 public class PanelEditGroups extends JPanel{
 
@@ -38,7 +40,7 @@ public class PanelEditGroups extends JPanel{
 		setPreferredSize(W.panelEditGroup);//(345+45,725)
 		setLayout(new FlowLayout(FlowLayout.CENTER));
 		setBackground(Color.green);
-		setVisible(false);
+	//	setVisible(false);
 	
 		JLabel l1 = new JLabel("Zaznacz grupê do zmiany",SwingConstants.CENTER);
 		l1.setFont(l1.getFont().deriveFont(W.fontSize12));

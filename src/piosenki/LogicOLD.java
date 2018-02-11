@@ -198,7 +198,7 @@ public class LogicOLD {
 		vc.selectionTableEditGroup();
 	}
 	public void endEditGroups(){
-		vc.hideGroupEdit();
+	//	vc.hideGroupEdit();
 		//dddshowText();
 //		createMenus();
 		Baza.saveBase();

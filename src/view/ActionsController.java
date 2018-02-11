@@ -1,18 +1,15 @@
 package view;
 
-import java.util.List;
-
-import piosenki.LogicOLD;
-import zzzzzzz.LogicEditSong;
 import piosenki.LogicDrop;
 import piosenki.LogicEditGroups;
+import piosenki.LogicOLD;
+import zzzzzzz.LogicEditSong;
 
 public class ActionsController{
 	
 	private LogicOLD l;
 	private LogicDrop ld;
 	private LogicEditGroups leg; 
-//	private LogicEditSong les;
 	
 	
 	public ActionsController(){
@@ -24,7 +21,6 @@ public class ActionsController{
 		this.l = l;
 		this.ld = ld;
 		this.leg = leg;
-//		this.les = les;
 	}
 
 	// DROP =======================================

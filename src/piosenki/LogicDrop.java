@@ -8,7 +8,6 @@ import javax.swing.JOptionPane;
 import baseFile.Baza;
 import editor.Editor;
 import song.SongInfo;
-import textViewer.TextViewer;
 import view.ViewController;
 
 public class LogicDrop {
@@ -201,7 +200,7 @@ public class LogicDrop {
 //		Dane.editLine1 = "";
 //		Dane.editLine2 = "";
 //		Dane.editCapo = "0";
-		vc.postAddTextFile();
+	//	vc.postAddTextFile();
 	//	vc.saveAsEnabled(false);
 		SongInfo si = new SongInfo();
 		si.setTitle("");

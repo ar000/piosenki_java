@@ -1,11 +1,13 @@
 package view;
 
 import java.awt.Color;
-import java.awt.FlowLayout;
 import java.awt.Toolkit;
+
 import javax.swing.JFrame;
+
 import editor.Editor;
 import groups.Groups;
+import groups.PanelEditGroups;
 import indexViewer.Index;
 import piosenki.LogicOLD;
 import textViewer.TextViewer;
@@ -39,56 +41,33 @@ public class Okno  extends JFrame{
 		
 		this.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/icon.png")));
 		
-		FlowLayout flow = new FlowLayout();
-		flow.setAlignment(FlowLayout.LEFT);
-		flow.setHgap(0);
-		flow.setVgap(0);
+//		FlowLayout flow = new FlowLayout();
+//		flow.setAlignment(FlowLayout.LEFT);
+//		flow.setHgap(0);
+//		flow.setVgap(0);
 		setTitle("***");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setResizable(false);
 		setLocation(W.windowX,W.windowY);
 		setPreferredSize(W.window);
-	//	setBounds(W.window);
-		//setLayout(flow);
 		setLayout(null);
-		
-		
-		
-		
 		setBackground(Color.YELLOW);
-		
-//		JPanel right = new JPanel();
-//		right.setPreferredSize(W.panelRightDim);
-//		right.setBackground(Color.red);
-//		right.setLayout(null);
 		
 		add(TextViewer.getPanelText());
 		add(Editor.getPanelTextEdit());
-		//add(Editor.getPanelTextEdit());
-		//add(p_left);
+		add(Groups.getPanelEditGroups());
 		add(TextViewer.getPanelTool());
-		
-		
 		add(Tools.getPanel());
 		add(Groups.getPanel());
-		
-		
-		
 		add(Index.getPanel());
-//		right.add(Groups.getPanel());
-//		right.add(Index.getPanel());
-	//	add(right);
-		
 		add(Editor.getPanelToolEdit());
-	//	add(p_edit);
-	//	add(p_package);
+		
+		
 		///////////////////////add(addShare);
-	//	add(editGroups);
+		
+		
 		pack();
 		setVisible(true);
-		//int w = (int) p_right.scrollT.getSize().getWidth();
-		//System.out.println(String.valueOf(w));
-		
 	}
 	
 	public void init(LogicOLD L, ViewController vc, ActionsController ac){

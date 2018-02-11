@@ -31,6 +31,7 @@ public class TextViewer{
 		
 		panelTranspose = new PanelTranspose();
 		show();
+		//hide();
 	}
 	
 	public static void setSong(SongInfo si){

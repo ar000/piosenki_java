@@ -40,5 +40,22 @@ public class Logic {
 		w.setTitle(title);
 	}
 	
+	public static void setAsSongViewer() {
+		TextViewer.show();
+		Index.show();
+		Tools.show();
+		Groups.show();
+		Editor.hide();
+	}
+	public static void setAsSongEditor() {
+		TextViewer.hide();
+		Tools.hide();
+		Index.hide();
+		Groups.hide();
+		Editor.show();
+	}
+	public static void setAsSongAdd() {
+		
+	}
 	
 }

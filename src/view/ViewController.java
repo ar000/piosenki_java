@@ -12,44 +12,44 @@ public class ViewController  {
 	
 	public void selectionTableEditGroup() {
 		w.editGroups.tabela.clearSelection();
-		w.editGroups.tabela.changeSelection(w.editGroups.gIndex, 0, false, false);
+//		w.editGroups.tabela.changeSelection(w.editGroups.gIndex, 0, false, false);
 	}
 	
-	public void showGroupEdit() {
-		//w.showEditGroup();
-	//	w.p_right.setVisible(false);
-	//	w.p_tool.setVisible(false);
-		w.editGroups.setVisible(true);
-		//w.editGroups.createModel();
-		w.editGroups.check();
-		
-		w.clearText();
-		w.pack();
-	}
+//	public void showGroupEdit() {
+//		//w.showEditGroup();
+//	//	w.p_right.setVisible(false);
+//	//	w.p_tool.setVisible(false);
+//		w.editGroups.setVisible(true);
+//		//w.editGroups.createModel();
+//		w.editGroups.check();
+//		
+//		w.clearText();
+//		w.pack();
+//	}
 	
-	public void hideGroupEdit() {
-	//	w.p_right.setVisible(true);
-	//	w.p_tool.setVisible(true);
-		w.editGroups.setVisible(false);
-		w.pack();
-	}
+//	public void hideGroupEdit() {
+//	//	w.p_right.setVisible(true);
+//	//	w.p_tool.setVisible(true);
+//		w.editGroups.setVisible(false);
+//		w.pack();
+//	}
 	public void showShareButton(boolean state) {
 //		w.p_tool.share.setVisible(state);
 	}
 
-	public void postAddTextFile() {
-//		w.p_edit.l_title.setText(Dane.editTitle);
-//		w.p_edit.l_author.setText(Dane.editAuthor);
-//		w.p_edit.l_words1.setText(Dane.editLine1);
-//		w.p_edit.l_words2.setText(Dane.editLine2);
-//		w.p_edit.l_capo.setText(Dane.editCapo);
-//		w.p_edit.u_title.setVisible(true);
-//		w.p_edit.u_word1.setVisible(true);
-//		w.p_edit.u_word2.setVisible(true);
-//		
-//		setScreenEdit();
-//		w.p_edit.b_saveAs.setEnabled(false);
-	}
+//	public void postAddTextFile() {
+////		w.p_edit.l_title.setText(Dane.editTitle);
+////		w.p_edit.l_author.setText(Dane.editAuthor);
+////		w.p_edit.l_words1.setText(Dane.editLine1);
+////		w.p_edit.l_words2.setText(Dane.editLine2);
+////		w.p_edit.l_capo.setText(Dane.editCapo);
+////		w.p_edit.u_title.setVisible(true);
+////		w.p_edit.u_word1.setVisible(true);
+////		w.p_edit.u_word2.setVisible(true);
+////		
+////		setScreenEdit();
+////		w.p_edit.b_saveAs.setEnabled(false);
+//	}
 
 	public void setScreenNormal() {
 	//	w.p_right.setVisible(true);

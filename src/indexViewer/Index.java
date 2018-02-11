@@ -6,23 +6,18 @@ import java.util.List;
 import javax.swing.DefaultListModel;
 
 import baseFile.Baza;
-import piosenki.Dane;
 import textViewer.TextViewer;
 
 public class Index {
 
 	private static PanelIndex iv;
 	private static DefaultListModel<IndexItem> modelWordd, modelTitlee;
-//	private static DefaultListModel<String> modelWord, modelTitle;
 	private static List<Integer> indexes = new ArrayList<>();
 	public static List<String> titlesNoHtm = new ArrayList<>();
 	public static boolean szukam = false;
-//	private static Okno okno;
 	public static String firstTitle = "";
 	
 	public Index(){
-//		modelWord = new DefaultListModel<String>();
-//		modelTitle = new DefaultListModel<String>();
 		modelWordd = new DefaultListModel<IndexItem>() ;
 		modelTitlee = new DefaultListModel<IndexItem>() ;
 		iv = new PanelIndex(modelWordd, modelTitlee);	
@@ -37,15 +32,13 @@ public class Index {
 	}
 	public static void virtualClickTitle(String title){
 		
-		TextViewer.showTitle(title);   //ac.clickTitleOnList(index);
+		TextViewer.showTitle(title);  
 		setMarkTitle(title);
 	}
 	public static void clickWord(int index){
 		String title = Baza.songBase.getSongFromWord(indexes.get(index)).getTitle();
 		iv.setTitleSelection(titlesNoHtm.indexOf(title));
 		TextViewer.showTitle(title);
-		
-		//ac.clickWordOnList(index, indexes);
 	}
 	
 	public static void setMarkTitle(String title){
@@ -64,11 +57,6 @@ public class Index {
 		iv.setVisible(false);
 	}
 	public static void search(String d){
-//		Szukaj sz = new Szukaj(d);
-//		Thread szuk = new Thread(sz);
-//		setCursorWait(true);
-//		szuk.start();
-		
 		modelTitlee.clear();
 		modelWordd.clear();
         titlesNoHtm.clear();

@@ -70,11 +70,6 @@ public class PanelTextEdit extends JPanel {
 	        		e.consume();
 	        		pressF1();
 	        	}
-	        	if(e.getKeyCode() == KeyEvent.VK_ENTER){
-	        		
-//	        	e.consume();
-//	        		pasteBR();
-	        	}
 	        }
 
 	        @Override
@@ -83,20 +78,12 @@ public class PanelTextEdit extends JPanel {
 
 	        @Override
 	        public void keyReleased(KeyEvent e) {
-//	        	if(e.getKeyCode() != KeyEvent.VK_UP && e.getKeyCode() != KeyEvent.VK_DOWN 
-//	        			&& e.getKeyCode() != KeyEvent.VK_RIGHT && e.getKeyCode() != KeyEvent.VK_LEFT){
-//	        	//	Editor.changeNewText();
-//	        	}
 	        }
 	    });
 
 		scrollView = new JScrollPane (textArea, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 	    scrollView.setBounds(W.textEditText);
 	    
-//	    add(t);
-//	    add(title);
-//	    add(i);
-//	    add(info);
 	    add(scrollView);
 	    setVisible(false);
 	}

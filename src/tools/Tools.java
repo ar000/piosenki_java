@@ -8,6 +8,7 @@ import editor.Editor;
 import groups.Groups;
 import indexViewer.Index;
 import piosenki.Const;
+import piosenki.Logic;
 import textViewer.TextViewer;
 import view.W;
 
@@ -44,11 +45,7 @@ public class Tools {
 	
 	public static void clickEdit(){
 		Editor.editCurrentSong();
-		TextViewer.hide();
-		Groups.hide();
-		Index.hide();
-		Editor.show();
-		hide();
+		Logic.setAsSongEditor();
 	}
 	
 	public static void createSongMenu(){

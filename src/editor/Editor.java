@@ -7,6 +7,7 @@ import baseFile.Baza;
 import groups.Groups;
 import indexViewer.Index;
 import piosenki.Const;
+import piosenki.Logic;
 import piosenki.Plik;
 import textViewer.TextViewer;
 import tools.Tools;
@@ -174,11 +175,12 @@ public class Editor {
 	}
 	
 	public static void clickCancel(){
-		TextViewer.show();
-		Groups.show();
-		Index.show();
-		Editor.hide();
-		Tools.show();
+//		TextViewer.show();
+//		Groups.show();
+//		Index.show();
+//		Editor.hide();
+//		Tools.show();
+		Logic.setAsSongViewer();
 	}
 	
 	public static void newTextFile(String path){

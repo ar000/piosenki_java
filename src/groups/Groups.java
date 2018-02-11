@@ -5,23 +5,25 @@ import javax.swing.JMenuItem;
 import baseFile.Baza;
 import baseFile.Group;
 import baseFile.SongBase;
+import editor.Editor;
 import indexViewer.Index;
 import piosenki.Const;
 import textViewer.TextViewer;
+import tools.Tools;
 import view.W;
 
 public class Groups {
 
 	private static PanelGroups pg;
-	
+	private static PanelEditGroups peg;
 	public static String grupa;
 	
 	private static int maxGroupSize, substringIndexForMenu;
 	
 	public Groups(){
 		pg = new PanelGroups();
+		peg = new PanelEditGroups();
 		new GroupsMenu();
-		//createMenu();
 	}
 	private static void createMenu(){
 		groupsMaxSize();
@@ -101,6 +103,12 @@ public class Groups {
 		createMenu();
 	}
 	
+	public static void showGroupsEdit(){
+		peg.setVisible(true);
+	}
+	public static void hideGroupsEdit(){
+		peg.setVisible(false);
+	}
 	public static void show(){
 		pg.setVisible(true);
 	}
@@ -119,7 +127,12 @@ public class Groups {
 	//	viewTitle(Current.title);
 	}
 	public static void clickEditGroups(){
-		
+		TextViewer.hide();
+		Editor.hide();
+		Tools.hide();
+		Index.hide();
+		hide();
+		showGroupsEdit();
 	}
 	public static void clicShareGroup(){
 		
@@ -127,5 +140,9 @@ public class Groups {
 
 	public static PanelGroups getPanel(){
 		return pg;
+	}
+	
+	public static PanelEditGroups getPanelEditGroups() {
+		return peg;
 	}
 }
